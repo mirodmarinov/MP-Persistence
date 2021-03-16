@@ -7,10 +7,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-<<<<<<< Updated upstream
-public class DBConnection 
-{
-=======
 /**
  * This class is the Database Connection class
  * used in the "Western Style Ltd" System.
@@ -19,8 +15,12 @@ public class DBConnection
  * Version: 1
  */
 
-public class DBConnection {
->>>>>>> Stashed changes
+public class DBConnection 
+{
+
+
+public class DBConnection 
+{
 	private Connection connection = null;
 	private static DBConnection dbConnection;
 	
