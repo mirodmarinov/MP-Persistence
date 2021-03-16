@@ -106,7 +106,9 @@ public class DBConnection {
 		return res;
 	}
 	
-	
+	/*
+	 * Heyo, we need this method
+	 */
 	public Connection getConnection() {
 		return connection;
 	}
