@@ -1,5 +1,4 @@
 package database;
-//hello
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -8,8 +7,20 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+<<<<<<< Updated upstream
 public class DBConnection 
 {
+=======
+/**
+ * This class is the Database Connection class
+ * used in the "Western Style Ltd" System.
+ * 
+ * Author: Group 1
+ * Version: 1
+ */
+
+public class DBConnection {
+>>>>>>> Stashed changes
 	private Connection connection = null;
 	private static DBConnection dbConnection;
 	
