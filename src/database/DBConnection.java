@@ -17,10 +17,6 @@ import java.sql.Statement;
 
 public class DBConnection 
 {
-
-
-public class DBConnection 
-{
 	private Connection connection = null;
 	private static DBConnection dbConnection;
 	
