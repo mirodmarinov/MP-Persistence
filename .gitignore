@@ -1,6 +1,7 @@
 # Compiled class file
 *.class
 
+
 # Log file
 *.log
 
@@ -10,6 +11,7 @@
 # Eclipse files
 .metadata
 .project
+.classpath
 
 # Mobile Tools for Java (J2ME)
 .mtj.tmp/

@@ -138,7 +138,6 @@ public class DBConnection
 		return res;
 	}
 	
-	
 	public Connection getConnection() 
 	{
 		return connection;
