@@ -14,12 +14,12 @@ import java.sql.Statement;
  * Author: Group 1
  * Version: 1
  */
-
 public class DBConnection 
 {
 	private Connection connection = null;
 	private static DBConnection dbConnection;
 	
+	//These are the Credentials used to connect to the database
 	private static final String DRIVER_CLASS = "com.microsoft.sqlserver.jdbc.SQLServerDriver";
 	private static final String DATABASE_NAME = "dmai0920_1028757";
 	private static final String SERVER_ADDRESS = "hildur.ucn.dk";
@@ -138,9 +138,7 @@ public class DBConnection
 		return res;
 	}
 	
-	/*
-	 * Heyo, we need this method
-	 */
+	
 	public Connection getConnection() 
 	{
 		return connection;
