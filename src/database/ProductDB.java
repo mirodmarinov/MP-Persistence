@@ -1,11 +1,17 @@
 package database;
 
+import java.math.BigDecimal;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import model.Clothing;
+import model.Equipment;
+import model.GunReplica;
 import model.Product;
+import model.Supplier;
+import database.SupplierDB;
 
 /**
  * @author Group1 dmai0920
@@ -14,6 +20,7 @@ import model.Product;
  */
 public class ProductDB implements ProductDBIF
 {
+	SupplierDB supplierDB;
 	//the connection the the database
 	private Connection connection;
 	//SQL queries used for prepared statements
@@ -55,6 +62,7 @@ public class ProductDB implements ProductDBIF
 	
 	public Product buildObject(ResultSet rs) throws SQLException //TODO - check exception
 	{
+		supplierDB = new SupplierDB();
 		Product product = null;
 		int category = rs.getInt("category_number");
 		
@@ -62,17 +70,26 @@ public class ProductDB implements ProductDBIF
 		{
 			case 1:
 			{
-				//product = new Clothing()
+				product = new Clothing(rs.getString("size"), rs.getString("colour"),rs.getInt("number"), rs.getString("name"),
+								rs.getString("description"),rs.getInt("stock"), rs.getInt("minimum_stock"), rs.getBigDecimal("purchase_price"),
+								rs.getBigDecimal("sales_price"), rs.getBigDecimal("rent_price"), rs.getString("country_of_origin"), 
+								supplierDB.findSupplierById(rs.getInt("supplier_id")));
 				break;
 			}
 			case 2:
 			{
-				
+				product = new Equipment(rs.getString("type"), rs.getInt("number"), rs.getString("name"),
+								rs.getString("description"),rs.getInt("stock"), rs.getInt("minimum_stock"), rs.getBigDecimal("purchase_price"),
+								rs.getBigDecimal("sales_price"), rs.getBigDecimal("rent_price"), rs.getString("country_of_origin"), 
+								supplierDB.findSupplierById(rs.getInt("supplier_id")));
 				break;
 			}
 			case 3:
 			{
-				
+				product = new GunReplica(rs.getString("calibre"), rs.getString("material"), rs.getInt("number"), rs.getString("name"),
+								rs.getString("description"),rs.getInt("stock"), rs.getInt("minimum_stock"), rs.getBigDecimal("purchase_price"),
+								rs.getBigDecimal("sales_price"), rs.getBigDecimal("rent_price"), rs.getString("country_of_origin"), 
+								supplierDB.findSupplierById(rs.getInt("supplier_id")));
 				break;
 			}
 			default:
@@ -80,8 +97,6 @@ public class ProductDB implements ProductDBIF
 				//TODO - throw an exception
 			}
 		}
-		
-		
 		return product;
 	}
 
