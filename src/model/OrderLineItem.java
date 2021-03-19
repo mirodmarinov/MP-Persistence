@@ -4,7 +4,7 @@ package model;
  * @author Group1 dmai0920
  * A class to represent the orderlineitems. These items hold a reference to the
  * purchased product and the amount of it. Used to avoid redundancy in the system
- * by sotring the product only once.
+ * by sorting the product only once.
  */
 public class OrderLineItem
 {

@@ -19,14 +19,14 @@ public class Product
 	private BigDecimal salesPrice;
 	private BigDecimal rentPrice;
 	private String countryOfOrigin;
-	private Supplier supplier;
-	private Category category;
+	private int supplierId;
+	private int categoryNumber;
 	
 	/**
 	 * A general constructor with all fields
 	 */
 	public Product(int productNumber, String name,  String description, int stock, int minimumStock, BigDecimal purchasePrice, 
-			BigDecimal salesPrice, BigDecimal rentPrice, String countryOfOrigin, Supplier supplier, Category category)
+			BigDecimal salesPrice, BigDecimal rentPrice, String countryOfOrigin, int supplierId, int categoryNumber)
 	{
 		this.productNumber = productNumber;
 		this.name = name;
@@ -37,8 +37,8 @@ public class Product
 		this.salesPrice = salesPrice;
 		this.rentPrice = rentPrice;
 		this.countryOfOrigin = countryOfOrigin;
-		this.setSupplier(supplier);
-		this.setCategory(category);
+		this.setSupplierId(supplierId);
+		this.setCategoryNumber(categoryNumber);
 	}
 
 	/**
@@ -134,19 +134,19 @@ public class Product
 		this.countryOfOrigin = countryOfOrigin;
 	}
 
-	public Supplier getSupplier() {
-		return supplier;
+	public int getSupplierId() {
+		return supplierId;
 	}
 
-	public void setSupplier(Supplier supplier) {
-		this.supplier = supplier;
+	public void setSupplierId(int supplierId) {
+		this.supplierId = supplierId;
 	}
 
-	public Category getCategory() {
-		return category;
+	public int getCategoryNumber() {
+		return categoryNumber;
 	}
 
-	public void setCategory(Category category) {
-		this.category = category;
+	public void setCategoryNumber(int categoryNumber) {
+		this.categoryNumber = categoryNumber;
 	}
 }
