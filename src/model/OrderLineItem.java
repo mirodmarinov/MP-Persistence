@@ -1,5 +1,9 @@
 package model;
 
+import exceptions.ExceptionMessages;
+import exceptions.InvalidAmountException;
+import exceptions.NotEnoughStockException;
+
 /**
  * @author Group1 dmai0920
  * A class to represent the orderlineitems. These items hold a reference to the
@@ -9,16 +13,27 @@ package model;
 public class OrderLineItem
 {
 	//Fields of OrderLineItem
-	private int     quantity;
+	private int amount; //TODO rename in diagrams
 	private Product product;
 	
 	/**
 	 * General constructor with all fields
 	 */
-	public OrderLineItem(Product product, int quantity)
+	public OrderLineItem(Product product, int amount) throws InvalidAmountException, NotEnoughStockException
 	{
 		this.product  = product;
-		this.quantity = quantity;
+		if(amount <= 0)
+		{
+			throw new InvalidAmountException("Amount must be atleast 1, please input a higher number.");
+		}
+		else if(amount > this.product.getStock())
+		{
+			throw new NotEnoughStockException(ExceptionMessages.NOT_ENOUGH_STOCK);
+		}
+		else
+		{
+			this.amount = amount;
+		}
 	}
 	
 	/**
@@ -26,12 +41,12 @@ public class OrderLineItem
 	 */
 	public int getQuantity()
 	{
-		return quantity;
+		return amount;
 	}
 
 	public void setQuantity(int quantity)
 	{
-		this.quantity = quantity;
+		this.amount = quantity;
 	}
 
 	public Product getProduct()

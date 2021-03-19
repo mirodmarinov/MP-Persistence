@@ -27,10 +27,10 @@ public class ProductController
 	 */
 	public Product findProductByNumber(int productNumber) throws SQLException
 	{
-		Product product = null;
+		Product productCopy = null;
 		
-		product = productDB.findProductByNumber(productNumber);
+		productCopy = productDB.findProductByNumber(productNumber);
 		
-		return product;
+		return productCopy;
 	}
 }

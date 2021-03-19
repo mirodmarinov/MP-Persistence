@@ -1,8 +1,12 @@
 package control;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 
+import exceptions.InvalidAmountException;
+import exceptions.NotEnoughStockException;
 import model.Customer;
+import model.OrderLineItem;
 import model.Product;
 
 /**
@@ -14,6 +18,9 @@ public class OrderController
 	//All fields
 	CustomerController customerCtr;
 	ProductController productCtr;
+	Product product;
+	Customer customer;
+	ArrayList<OrderLineItem> orderLineItems;
 
 	/**
 	 * General constructor setting the fields
@@ -22,6 +29,7 @@ public class OrderController
 	public OrderController() throws SQLException //TODO check exception
 	{
 		customerCtr = new CustomerController();
+		orderLineItems = new ArrayList<>();
 	}
 
 	/**
@@ -35,6 +43,7 @@ public class OrderController
 		String[] customerInfo;
 		
 		Customer customer = customerCtr.findCustomerByPhone(phone);
+		this.customer = customer;
 		customerInfo = customer.infoToArray();
 
 		return customerInfo;
@@ -48,11 +57,26 @@ public class OrderController
 	 */
 	public String[] findProductByNumber(int productNumber) throws SQLException
 	{
-		String[] productInfo;
+		String[] productCopyInfo;
 		
-		Product product = productCtr.findProductByNumber(productNumber);
-		productInfo = product.infoToArray();
+		Product productCopy = productCtr.findProductByNumber(productNumber);
+		this.product = productCopy;
+		productCopyInfo = productCopy.infoToArray();
 		
-		return productInfo;
+		return productCopyInfo;
 	}
+	
+	public boolean addProductToOrder(int productNumber, int amount) throws InvalidAmountException, NotEnoughStockException
+	{
+		boolean added = false;
+		
+		if(this.product.getProductNumber() == productNumber)
+		{
+			OrderLineItem orderLineItem = new OrderLineItem(this.product, amount);
+			added = orderLineItems.add(orderLineItem);
+		}
+		
+		return added;
+	}
+	//TODO - not sure if finished, check later
 }

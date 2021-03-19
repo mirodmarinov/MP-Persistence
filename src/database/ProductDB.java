@@ -47,17 +47,17 @@ public class ProductDB implements ProductDBIF
 	@Override
 	public Product findProductByNumber(int productNumber) throws SQLException //TODO - check exception
 	{
-		Product product = null;
+		Product productCopy = null;
 		
 		psFindByNumber.setInt(1, productNumber);
 		ResultSet rs = psFindByNumber.executeQuery();
 		
 		if(rs.next())
 		{
-			product = buildObject(rs);
+			productCopy = buildObject(rs);
 		}
 		
-		return product;
+		return productCopy;
 	}
 	
 	/**
