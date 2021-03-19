@@ -79,4 +79,9 @@ public class OrderController
 		return added;
 	}
 	//TODO - not sure if finished, check later
+	
+	public String[] createOrder()
+	{
+		return null;
+	}
 }
