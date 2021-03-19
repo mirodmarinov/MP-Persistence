@@ -7,74 +7,95 @@ package model;
 public class Customer
 {
 	//Fields for the Customer
-	private String name;
-	private String address;
+	private int id;
+	private String phoneNumber;
+	private String email;
+	private String country;
 	private String zipcode;
 	private String city;
-	private String phoneNumber;
+	private String streetname;
+	//TODO change housenumber to varchar in DB
+	private String housenumber;
 	
 	/**
 	 * General constructor with all parameters for the Customer object
 	 */
-	public Customer(String name, String address, String zipcode, String city, String phoneNumber)
+	public Customer(int id, String email, String phoneNumber, String country, String zipcode, String city, String streetname, String housenumber)
 	{
-		this.name = name;
-		this.address = address;
-		this.zipcode = zipcode;
-		this.city = city;
+		this.id = id;
+		this.email = email;
 		this.phoneNumber = phoneNumber;
-	}
-	
-	/**
-	 * Getters and setters for all fields
-	 */
-	public String getName()
-	{
-		return name;
-	}
-
-	public void setName(String name)
-	{
-		this.name = name;
-	}
-
-	public String getAddress()
-	{
-		return address;
-	}
-
-	public void setAddress(String address)
-	{
-		this.address = address;
-	}
-
-	public String getZipcode()
-	{
-		return zipcode;
-	}
-
-	public void setZipcode(String zipcode)
-	{
+		this.country = country;
 		this.zipcode = zipcode;
-	}
-
-	public String getCity()
-	{
-		return city;
-	}
-
-	public void setCity(String city)
-	{
 		this.city = city;
+		this.streetname = streetname;
+		this.housenumber = housenumber;
 	}
 
-	public String getPhoneNumber()
-	{
+	/**
+	 * Getters and setters for all fields.
+	 */
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public String getPhoneNumber() {
 		return phoneNumber;
 	}
 
-	public void setPhoneNumber(String phoneNumber)
-	{
+	public void setPhoneNumber(String phoneNumber) {
 		this.phoneNumber = phoneNumber;
 	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public String getCountry() {
+		return country;
+	}
+
+	public void setCountry(String country) {
+		this.country = country;
+	}
+
+	public String getZipcode() {
+		return zipcode;
+	}
+
+	public void setZipcode(String zipcode) {
+		this.zipcode = zipcode;
+	}
+
+	public String getCity() {
+		return city;
+	}
+
+	public void setCity(String city) {
+		this.city = city;
+	}
+
+	public String getStreetname() {
+		return streetname;
+	}
+
+	public void setStreetname(String streetname) {
+		this.streetname = streetname;
+	}
+
+	public String getHousenumber() {
+		return housenumber;
+	}
+
+	public void setHousenumber(String housenumber) {
+		this.housenumber = housenumber;
+	}	
 }
