@@ -3,6 +3,7 @@ package control;
 import java.sql.SQLException;
 
 import database.CustomerDB;
+import database.CustomerDBIF;
 import model.Customer;
 
 /**
@@ -12,7 +13,7 @@ import model.Customer;
 public class CustomerController
 {
 	//Fields
-	private CustomerDB customerDB; 
+	private CustomerDBIF customerDB; 
 
 	/**
 	 * General constructor setting the fields
@@ -32,6 +33,11 @@ public class CustomerController
 	public Customer findCustomerByPhone(String phone) throws SQLException //TODO - check exception
 	{
 		return customerDB.findCustomerByPhone(phone);
+	}
+	
+	public void setCustomerDB (CustomerDBIF customerDB)
+	{
+		this.customerDB = customerDB;
 	}
 
 }
