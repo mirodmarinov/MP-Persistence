@@ -45,11 +45,11 @@ public class ProductDB implements ProductDBIF
 	 * @param productNumber
 	 */
 	@Override
-	public Product findProductByNumber(String productNumber) throws SQLException //TODO - check exception
+	public Product findProductByNumber(int productNumber) throws SQLException //TODO - check exception
 	{
 		Product product = null;
 		
-		psFindByNumber.setString(1, productNumber);
+		psFindByNumber.setInt(1, productNumber);
 		ResultSet rs = psFindByNumber.executeQuery();
 		
 		if(rs.next())
@@ -60,6 +60,13 @@ public class ProductDB implements ProductDBIF
 		return product;
 	}
 	
+	/**
+	 * This method created a Product object based on the ResultSet that was found, it checks the category numbers and creates a different
+	 * type of product based on that number
+	 * @param rs
+	 * @return the created Product
+	 * @throws SQLException
+	 */
 	public Product buildObject(ResultSet rs) throws SQLException //TODO - check exception
 	{
 		supplierDB = new SupplierDB();
@@ -99,5 +106,4 @@ public class ProductDB implements ProductDBIF
 		}
 		return product;
 	}
-
 }

@@ -11,5 +11,5 @@ import model.Product;
  */
 public interface ProductDBIF
 {
-	Product findProductByNumber(String productNumber) throws SQLException; //TODO - check exceptions
+	Product findProductByNumber(int productNumber) throws SQLException; //TODO - check exceptions
 }

@@ -133,7 +133,7 @@ public abstract class Product
 		this.countryOfOrigin = countryOfOrigin;
 	}
 
-	public Supplier getSupplierId() {
+	public Supplier getSupplier() {
 		return supplier;
 	}
 
@@ -148,4 +148,6 @@ public abstract class Product
 	public void setCategory(Category category) {
 		this.category = category;
 	}
+	
+	public abstract String[] infoToArray(); //TODO- add to diagrams
 }

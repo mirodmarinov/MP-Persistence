@@ -43,5 +43,15 @@ public class GunReplica extends Product {
 	public void setMaterial(String material) {
 		this.material = material;
 	}
+	
+	@Override
+	public String[] infoToArray()
+	{
+		String[] productInfo = new String[] {getCalibre(), getMaterial(), String.valueOf(getProductNumber()), getName(), getDescription(), 
+						String.valueOf(getStock()), String.valueOf(getMinimumStock()), getPurchasePrice().toString(), getSalesPrice().toString(),
+						getRentPrice().toString(), getCountryOfOrigin(), String.valueOf(getSupplier().getId()), getSupplier().getName()};
+
+		return productInfo;
+	}
 
 }

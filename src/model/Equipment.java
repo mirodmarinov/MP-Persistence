@@ -33,5 +33,15 @@ public class Equipment extends Product {
 	public void setType(String type) {
 		this.type = type;
 	}
+	
+	@Override
+	public String[] infoToArray()
+	{
+		String[] productInfo = new String[] {getType(), String.valueOf(getProductNumber()), getName(), getDescription(), 
+						String.valueOf(getStock()), String.valueOf(getMinimumStock()), getPurchasePrice().toString(), getSalesPrice().toString(),
+						getRentPrice().toString(), getCountryOfOrigin(), String.valueOf(getSupplier().getId()), getSupplier().getName()};
+
+		return productInfo;
+	}
 
 }

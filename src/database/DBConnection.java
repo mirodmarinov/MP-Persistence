@@ -170,7 +170,7 @@ public class DBConnection
 	}
 	
 	/**
-	 * Gether method for the connection
+	 * Gather method for the connection
 	 * @return
 	 */
 	public Connection getConnection() 
