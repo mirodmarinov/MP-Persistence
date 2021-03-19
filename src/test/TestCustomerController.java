@@ -14,7 +14,7 @@ import database.CustomerDBStub;
 import model.*;
 import exceptions.*;
 
-class testCustomerController {
+class TestCustomerController {
 
 	CustomerController customerCtr;
 	

@@ -25,7 +25,7 @@ import exceptions.*;
  * A test Class for Product Controller
  *
  */
-class testProductController {
+class TestProductController {
 
 	ProductController productCtr;
 	
