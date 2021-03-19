@@ -4,14 +4,14 @@ import java.math.BigDecimal;
 
 /**
  * @author Group1 dmai0920
- * A class representing the product in the system
+ * A class representing the Products in the system
  *
  */
 public class Product
 {
 	//Fields of the product
-	private String name;
 	private int productNumber;
+	private String name;
 	private String description;
 	private int stock;
 	private int minimumStock;
@@ -19,14 +19,17 @@ public class Product
 	private BigDecimal salesPrice;
 	private BigDecimal rentPrice;
 	private String countryOfOrigin;
+	private Supplier supplier;
+	private Category category;
 	
 	/**
 	 * A general constructor with all fields
 	 */
-	public Product(String name, int productNumber, String description, int stock, int minimumStock, BigDecimal purchasePrice, BigDecimal salesPrice, BigDecimal rentPrice, String countryOfOrigin)
+	public Product(int productNumber, String name,  String description, int stock, int minimumStock, BigDecimal purchasePrice, 
+			BigDecimal salesPrice, BigDecimal rentPrice, String countryOfOrigin, Supplier supplier, Category category)
 	{
-		this.name = name;
 		this.productNumber = productNumber;
+		this.name = name;
 		this.description = description;
 		this.stock = stock;
 		this.minimumStock = minimumStock;
@@ -34,21 +37,13 @@ public class Product
 		this.salesPrice = salesPrice;
 		this.rentPrice = rentPrice;
 		this.countryOfOrigin = countryOfOrigin;
+		this.setSupplier(supplier);
+		this.setCategory(category);
 	}
 
 	/**
 	 * Getters and setters for all fields
 	 */
-	public String getName()
-	{
-		return name;
-	}
-
-	public void setName(String name)
-	{
-		this.name = name;
-	}
-
 	public int getProductNumber()
 	{
 		return productNumber;
@@ -57,6 +52,16 @@ public class Product
 	public void setProductNumber(int productNumber)
 	{
 		this.productNumber = productNumber;
+	}
+	
+	public String getName()
+	{
+		return name;
+	}
+
+	public void setName(String name)
+	{
+		this.name = name;
 	}
 
 	public String getDescription()
@@ -127,5 +132,21 @@ public class Product
 	public void setCountryOfOrigin(String countryOfOrigin)
 	{
 		this.countryOfOrigin = countryOfOrigin;
+	}
+
+	public Supplier getSupplier() {
+		return supplier;
+	}
+
+	public void setSupplier(Supplier supplier) {
+		this.supplier = supplier;
+	}
+
+	public Category getCategory() {
+		return category;
+	}
+
+	public void setCategory(Category category) {
+		this.category = category;
 	}
 }
