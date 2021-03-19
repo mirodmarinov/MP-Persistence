@@ -133,19 +133,23 @@ public abstract class Product
 		this.countryOfOrigin = countryOfOrigin;
 	}
 
-	public Supplier getSupplier() {
+	public Supplier getSupplier() 
+	{
 		return supplier;
 	}
 
-	public void setSupplier(Supplier supplier) {
+	public void setSupplier(Supplier supplier) 
+	{
 		this.supplier = supplier;
 	}
 
-	public Category getCategory() {
+	public Category getCategory() 
+	{
 		return category;
 	}
 
-	public void setCategory(Category category) {
+	public void setCategory(Category category) 
+	{
 		this.category = category;
 	}
 	

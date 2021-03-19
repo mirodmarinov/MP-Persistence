@@ -6,8 +6,8 @@ import java.math.BigDecimal;
  * @author Group1 dmai0920
  * A subclass representing the gun replicas in Products
  */
-public class GunReplica extends Product {
-
+public class GunReplica extends Product 
+{
 	//All new fields
 	private String calibre;
 	private String material;
@@ -17,8 +17,8 @@ public class GunReplica extends Product {
 	 */
 	public GunReplica(String calibre, String material, int productNumber, String name, String description, int stock, int minimumStock,
 			BigDecimal purchasePrice, BigDecimal salesPrice, BigDecimal rentPrice, String countryOfOrigin,
-			Supplier supplier) {
-		
+			Supplier supplier) 
+	{
 		super(productNumber, name, description, stock, minimumStock, purchasePrice, salesPrice, rentPrice,
 				countryOfOrigin, supplier, Category.GUN_REPLICA);
 		this.setCalibre(calibre);
@@ -28,22 +28,31 @@ public class GunReplica extends Product {
 	/**
 	 * Getters and setters for the fields
 	 */
-	public String getCalibre() {
+	public String getCalibre() 
+	{
 		return calibre;
 	}
 
-	public void setCalibre(String calibre) {
+	public void setCalibre(String calibre) 
+	{
 		this.calibre = calibre;
 	}
 
-	public String getMaterial() {
+	public String getMaterial() 
+	{
 		return material;
 	}
 
-	public void setMaterial(String material) {
+	public void setMaterial(String material) 
+	{
 		this.material = material;
 	}
 	
+	
+	/**
+	 * This method converts all the information about GunReplica in the fields to string arrays for gui purposes
+	 * @return String array
+	 */
 	@Override
 	public String[] infoToArray()
 	{
@@ -53,5 +62,4 @@ public class GunReplica extends Product {
 
 		return productInfo;
 	}
-
 }

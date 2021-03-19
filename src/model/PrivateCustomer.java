@@ -4,8 +4,8 @@ package model;
  * @author Group1 dmai0920
  * A subclass to represent the Private type for the customer
  */
-public class PrivateCustomer extends Customer {
-
+public class PrivateCustomer extends Customer 
+{
 	//All the new fields
 	private String firstName;
 	private String lastName;
@@ -14,7 +14,8 @@ public class PrivateCustomer extends Customer {
 	 * Generic constructor with all attributes, also calling the super class
 	 */
 	public PrivateCustomer(String firstName, String lastName, int id, String email, String phoneNumber, String country, String zipcode, String city,
-			String streetname, String housenumber) {
+			String streetname, String housenumber) 
+	{
 		super(id, email, phoneNumber, country, zipcode, city, streetname, housenumber);
 		this.firstName = firstName;
 		this.lastName = lastName;
@@ -43,6 +44,10 @@ public class PrivateCustomer extends Customer {
 		this.lastName = lastName;
 	}
 
+	/**
+	 * This method converts all the information about the Private Customer in the fields to a string array for GUI purposes
+	 * @return String array
+	 */
 	@Override
 	public String[] infoToArray() //TODO - put this into the diagrams
 	{
