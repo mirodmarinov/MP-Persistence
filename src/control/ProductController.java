@@ -21,6 +21,5 @@ public class ProductController {
 	{
 		String[] productInfo;
 		return null;
-		
 	}
 }

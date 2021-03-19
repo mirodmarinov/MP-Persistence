@@ -44,7 +44,7 @@ public class OrderController
 	{
 		String[] productInfo;
 		
-		Product product = productCtr.findCustomerByNumber(productNumber);
-		
+		Product product = productCtr.findProductByNumber(productNumber);
+		return null;
 	}
 }
