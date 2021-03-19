@@ -4,7 +4,7 @@ package model;
  * @author Group1 dmai0920
  * This class represents the Customer in the system
  */
-public abstract class Customer
+public abstract class Customer //TODO- add the fact that its abstract to the diagrams
 {
 	//Fields for the Customer
 	private int id; //TODO - check if should be protected instead
@@ -98,6 +98,6 @@ public abstract class Customer
 		this.housenumber = housenumber;
 	}
 	
-	public abstract String[] infoToArray();
+	public abstract String[] infoToArray(); //TODO - add this to the diagrams
 	
 }
