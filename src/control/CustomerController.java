@@ -35,6 +35,10 @@ public class CustomerController
 		return customerDB.findCustomerByPhone(phone);
 	}
 	
+	/**
+	 * Used for testing purposes, using Scaffolding and customerDB.
+	 * @param customerDB
+	 */
 	public void setCustomerDB (CustomerDBIF customerDB)
 	{
 		this.customerDB = customerDB;

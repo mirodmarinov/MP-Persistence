@@ -39,6 +39,7 @@ class testCustomerController {
 		Customer returnedCustomer = customerCtr.findCustomerByPhone("12345678");
 		assertEquals(1, returnedCustomer.getId());
 		assertArrayEquals(returnedCustomer.infoToArray(), actualCustomer.infoToArray());
+		assertEquals(actualCustomer, returnedCustomer);
 	}
 
 	@Test
