@@ -1,5 +1,7 @@
 package database;
 
+import java.sql.SQLException;
+
 import model.Product;
 
 /**
@@ -9,5 +11,5 @@ import model.Product;
  */
 public interface ProductDBIF
 {
-	Product findProductByNumber(String productNumber);
+	Product findProductByNumber(String productNumber) throws SQLException; //TODO - check exceptions
 }
