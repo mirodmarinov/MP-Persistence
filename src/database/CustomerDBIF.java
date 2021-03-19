@@ -4,6 +4,10 @@ import java.sql.SQLException;
 
 import model.Customer;
 
+/**
+ * @author Group1 dmai0920
+ * This interface shows what methods we use in the CustomerDB class
+ */
 public interface CustomerDBIF
 {
 	//TODO - replace exceptions

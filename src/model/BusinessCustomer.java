@@ -30,5 +30,14 @@ public class BusinessCustomer extends Customer {
 	public void setCvrNumber(int cvrNumber) {
 		this.cvrNumber = cvrNumber;
 	}
+	
+	@Override
+	public String[] infoToArray()
+	{
+		String[] customerInfo = new String[] {String.valueOf(getId()), getEmail(), getPhoneNumber(), getCountry(), getZipcode(), 
+						getCity(), getStreetname(), getHousenumber(), getBusinessName(), String.valueOf(getCvrNumber())}; 
+		
+		return customerInfo;
+	}
 
 }

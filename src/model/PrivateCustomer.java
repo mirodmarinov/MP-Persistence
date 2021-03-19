@@ -30,4 +30,13 @@ public class PrivateCustomer extends Customer {
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
 	}
+
+	@Override
+	public String[] infoToArray()
+	{
+		String[] customerInfo = new String[] {String.valueOf(getId()), getEmail(), getPhoneNumber(), getCountry(), getZipcode(), 
+						getCity(), getStreetname(), getHousenumber(), getFirstName(), getLastName()}; 
+		
+		return customerInfo;
+	}
 }

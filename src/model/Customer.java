@@ -4,10 +4,10 @@ package model;
  * @author Group1 dmai0920
  * This class represents the Customer in the system
  */
-public class Customer
+public abstract class Customer
 {
 	//Fields for the Customer
-	private int id;
+	private int id; //TODO - check if should be protected instead
 	private String phoneNumber;
 	private String email;
 	private String country;
@@ -96,5 +96,8 @@ public class Customer
 
 	public void setHousenumber(String housenumber) {
 		this.housenumber = housenumber;
-	}	
+	}
+	
+	public abstract String[] infoToArray();
+	
 }
