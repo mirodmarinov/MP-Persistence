@@ -34,67 +34,83 @@ public abstract class Customer //TODO- add the fact that its abstract to the dia
 	/**
 	 * Getters and setters for all fields.
 	 */
-	public int getId() {
+	public int getId() 
+	{
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(int id) 
+	{
 		this.id = id;
 	}
 
-	public String getPhoneNumber() {
+	public String getPhoneNumber() 
+	{
 		return phoneNumber;
 	}
 
-	public void setPhoneNumber(String phoneNumber) {
+	public void setPhoneNumber(String phoneNumber) 
+	{
 		this.phoneNumber = phoneNumber;
 	}
 
-	public String getEmail() {
+	public String getEmail() 
+	{
 		return email;
 	}
 
-	public void setEmail(String email) {
+	public void setEmail(String email) 
+	{
 		this.email = email;
 	}
 
-	public String getCountry() {
+	public String getCountry() 
+	{
 		return country;
 	}
 
-	public void setCountry(String country) {
+	public void setCountry(String country) 
+	{
 		this.country = country;
 	}
 
-	public String getZipcode() {
+	public String getZipcode() 
+	{
 		return zipcode;
 	}
 
-	public void setZipcode(String zipcode) {
+	public void setZipcode(String zipcode) 
+	{
 		this.zipcode = zipcode;
 	}
 
-	public String getCity() {
+	public String getCity() 
+	{
 		return city;
 	}
 
-	public void setCity(String city) {
+	public void setCity(String city) 
+	{
 		this.city = city;
 	}
 
-	public String getStreetname() {
+	public String getStreetname() 
+	{
 		return streetname;
 	}
 
-	public void setStreetname(String streetname) {
+	public void setStreetname(String streetname) 
+	{
 		this.streetname = streetname;
 	}
 
-	public String getHousenumber() {
+	public String getHousenumber() 
+	{
 		return housenumber;
 	}
 
-	public void setHousenumber(String housenumber) {
+	public void setHousenumber(String housenumber) 
+	{
 		this.housenumber = housenumber;
 	}
 	

@@ -40,11 +40,19 @@ public class OrderController
 		return customerInfo;
 	}
 	
+	/**
+	 * This method calls the Product controller and creates a string array containing all the necessary information for GUI purposes
+	 * @param productNumber
+	 * @return
+	 * @throws SQLException
+	 */
 	public String[] findProductByNumber(int productNumber) throws SQLException
 	{
 		String[] productInfo;
 		
 		Product product = productCtr.findProductByNumber(productNumber);
-		return null;
+		productInfo = product.infoToArray();
+		
+		return productInfo;
 	}
 }

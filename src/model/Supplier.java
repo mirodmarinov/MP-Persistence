@@ -37,75 +37,93 @@ public class Supplier
 	/**
 	 * Getters and setters for all fields
 	 */
-	public int getId() {
+	public int getId() 
+	{
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(int id) 
+	{
 		this.id = id;
 	}
 
-	public String getName() {
+	public String getName() 
+	{
 		return name;
 	}
 
-	public void setName(String name) {
+	public void setName(String name) 
+	{
 		this.name = name;
 	}
 
-	public String getPhoneNumber() {
+	public String getPhoneNumber() 
+	{
 		return phoneNumber;
 	}
 
-	public void setPhoneNumber(String phoneNumber) {
+	public void setPhoneNumber(String phoneNumber) 
+	{
 		this.phoneNumber = phoneNumber;
 	}
 
-	public String getEmail() {
+	public String getEmail() 
+	{
 		return email;
 	}
 
-	public void setEmail(String email) {
+	public void setEmail(String email) 
+	{
 		this.email = email;
 	}
 
-	public String getCountry() {
+	public String getCountry()
+	{
 		return country;
 	}
 
-	public void setCountry(String country) {
+	public void setCountry(String country) 
+	{
 		this.country = country;
 	}
 
-	public String getZipCode() {
+	public String getZipCode()
+	{
 		return zipCode;
 	}
 
-	public void setZipCode(String zipCode) {
+	public void setZipCode(String zipCode) 
+	{
 		this.zipCode = zipCode;
 	}
 
-	public String getCity() {
+	public String getCity() 
+	{
 		return city;
 	}
 
-	public void setCity(String city) {
+	public void setCity(String city) 
+	{
 		this.city = city;
 	}
 
-	public String getStreetName() {
+	public String getStreetName() 
+	{
 		return streetName;
 	}
 
-	public void setStreetName(String streetName) {
+	public void setStreetName(String streetName) 
+	{
 		this.streetName = streetName;
 	}
 
-	public String getHouseNumber() {
+	public String getHouseNumber() 
+	{
 		return houseNumber;
 	}
 
-	public void setHouseNumber(String houseNumber) {
+	public void setHouseNumber(String houseNumber) 
+	{
 		this.houseNumber = houseNumber;
 	}
 }
