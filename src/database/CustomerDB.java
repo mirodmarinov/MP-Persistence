@@ -11,7 +11,6 @@ import model.PrivateCustomer;
 
 public class CustomerDB implements CustomerDBIF
 {
-	//TODO - clear database :)
 	private Connection connection;
 	
 	private static final String FIND_BY_PHONE = String.format("SELECT id, phone_number, country, city, zip_code, street_name, house_number, email, "
