@@ -1,10 +1,18 @@
 package model;
 
+/**
+ * @author Group1 dmai0920
+ * A subclass to represent the Private type for the customer
+ */
 public class PrivateCustomer extends Customer {
 
+	//All the new fields
 	private String firstName;
 	private String lastName;
 	
+	/**
+	 * Generic constructor with all attributes, also calling the super class
+	 */
 	public PrivateCustomer(String firstName, String lastName, int id, String email, String phoneNumber, String country, String zipcode, String city,
 			String streetname, String housenumber) {
 		super(id, email, phoneNumber, country, zipcode, city, streetname, housenumber);

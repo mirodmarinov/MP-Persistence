@@ -14,11 +14,11 @@ public class Order
 	private String orderDate;
 	private String deliveryDate;
 	private String paymentDate;
-	private Status status; //The status of the order
 	private Customer customer;
 	private ArrayList<OrderLineItem> products;
 	private BigDecimal discount;
 	private BigDecimal totalPrice;
+	private Status status; //The status of the order
 	
 	/**
 	 * General Constructor with all fields

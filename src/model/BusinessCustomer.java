@@ -1,10 +1,18 @@
 package model;
 
+/**
+ * @author Group1 dmai0920
+ * A subclass to represent the Business type for the customer
+ */
 public class BusinessCustomer extends Customer {
 
-	private String businessName;
+	//All the new fields
 	private int cvrNumber;
+	private String businessName;
 	
+	/**
+	 * Generic constructor with all attributes, also calling the super class
+	 */
 	public BusinessCustomer(String businessName, int cvrNumber, int id, String email, String phoneNumber, String country, String zipcode, String city,
 			String streetname, String housenumber) {
 		super(id, email, phoneNumber, country, zipcode, city, streetname, housenumber);

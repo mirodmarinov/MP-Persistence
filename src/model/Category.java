@@ -1,28 +1,29 @@
 package model;
 
-public class Category {
-
-	private int categoryNumber;
-	private String name;
+/**
+ * @author Group1 dmai0920
+ * A class representing the categories of products
+ */
+public enum Category
+{
+	//The types, Clothing with id 1, Equipment 2, and Gun replicas with id 3
+	CLOTHING(1),
+	EQUIPMENT(2),
+	GUN_REPLICA(3);
 	
-	public Category(int categoryNumber, String name) {
-		this.setCategoryNumber(categoryNumber);
-		this.setName(name);
+	//Category numbers field
+	private int categoryID;
+	
+	//COnstructor setting the ID
+	Category(int categoryID)
+	{
+		this.categoryID = categoryID;
 	}
-
-	public int getCategoryNumber() {
-		return categoryNumber;
-	}
-
-	public void setCategoryNumber(int categoryNumber) {
-		this.categoryNumber = categoryNumber;
-	}
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
+	
+	//A getter for the ID
+	public int getCategory()
+	{
+		return this.categoryID;
 	}
 }
+

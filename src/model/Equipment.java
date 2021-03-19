@@ -8,9 +8,10 @@ public class Equipment extends Product {
 	
 	public Equipment(String type, int productNumber, String name, String description, int stock, int minimumStock,
 			BigDecimal purchasePrice, BigDecimal salesPrice, BigDecimal rentPrice, String countryOfOrigin,
-			int supplierId, int categoryNumber) {
+			Supplier supplier) {
+		
 		super(productNumber, name, description, stock, minimumStock, purchasePrice, salesPrice, rentPrice,
-				countryOfOrigin, supplierId, categoryNumber);
+				countryOfOrigin, supplier, Category.EQUIPMENT);
 		this.setType(type);
 	}
 

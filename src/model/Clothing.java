@@ -9,9 +9,10 @@ public class Clothing extends Product {
 	
 	public Clothing(String size, String colour, int productNumber, String name, String description, int stock, int minimumStock,
 			BigDecimal purchasePrice, BigDecimal salesPrice, BigDecimal rentPrice, String countryOfOrigin,
-			int supplierId, int categoryNumber) {
+			Supplier supplier) {
+		
 		super(productNumber, name, description, stock, minimumStock, purchasePrice, salesPrice, rentPrice,
-				countryOfOrigin, supplierId, categoryNumber);
+				countryOfOrigin, supplier, Category.CLOTHING);
 		this.size = size;
 		this.colour = colour;
 	}

@@ -5,28 +5,27 @@ import java.math.BigDecimal;
 /**
  * @author Group1 dmai0920
  * A class representing the Products in the system
- *
  */
-public class Product
+public abstract class Product
 {
 	//Fields of the product
 	private int productNumber;
-	private String name;
-	private String description;
 	private int stock;
 	private int minimumStock;
+	private Category category;
+	private String name;
+	private String description;
+	private String countryOfOrigin;
 	private BigDecimal purchasePrice;
 	private BigDecimal salesPrice;
 	private BigDecimal rentPrice;
-	private String countryOfOrigin;
-	private int supplierId;
-	private int categoryNumber;
+	private Supplier supplier;
 	
 	/**
 	 * A general constructor with all fields
 	 */
 	public Product(int productNumber, String name,  String description, int stock, int minimumStock, BigDecimal purchasePrice, 
-			BigDecimal salesPrice, BigDecimal rentPrice, String countryOfOrigin, int supplierId, int categoryNumber)
+			BigDecimal salesPrice, BigDecimal rentPrice, String countryOfOrigin, Supplier supplier, Category category)
 	{
 		this.productNumber = productNumber;
 		this.name = name;
@@ -37,8 +36,8 @@ public class Product
 		this.salesPrice = salesPrice;
 		this.rentPrice = rentPrice;
 		this.countryOfOrigin = countryOfOrigin;
-		this.setSupplierId(supplierId);
-		this.setCategoryNumber(categoryNumber);
+		this.setSupplier(supplier);
+		this.setCategory(category);
 	}
 
 	/**
@@ -134,19 +133,19 @@ public class Product
 		this.countryOfOrigin = countryOfOrigin;
 	}
 
-	public int getSupplierId() {
-		return supplierId;
+	public Supplier getSupplierId() {
+		return supplier;
 	}
 
-	public void setSupplierId(int supplierId) {
-		this.supplierId = supplierId;
+	public void setSupplier(Supplier supplier) {
+		this.supplier = supplier;
 	}
 
-	public int getCategoryNumber() {
-		return categoryNumber;
+	public Category getCategory() {
+		return category;
 	}
 
-	public void setCategoryNumber(int categoryNumber) {
-		this.categoryNumber = categoryNumber;
+	public void setCategory(Category category) {
+		this.category = category;
 	}
 }
