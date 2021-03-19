@@ -2,11 +2,19 @@ package model;
 
 import java.math.BigDecimal;
 
+/**
+ * @author Group1 dmai0920
+ * A subclass representing the gun replicas in Products
+ */
 public class GunReplica extends Product {
 
+	//All new fields
 	private String calibre;
 	private String material;
 	
+	/**
+	 * General constructor including the super class constructor
+	 */
 	public GunReplica(String calibre, String material, int productNumber, String name, String description, int stock, int minimumStock,
 			BigDecimal purchasePrice, BigDecimal salesPrice, BigDecimal rentPrice, String countryOfOrigin,
 			Supplier supplier) {

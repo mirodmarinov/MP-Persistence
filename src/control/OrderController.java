@@ -2,9 +2,7 @@ package control;
 
 import java.sql.SQLException;
 
-import model.BusinessCustomer;
 import model.Customer;
-import model.PrivateCustomer;
 
 public class OrderController
 {

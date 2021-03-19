@@ -1,23 +1,31 @@
 package database;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 
 import model.BusinessCustomer;
 import model.Customer;
 import model.PrivateCustomer;
 
+/**
+ * @author Group1 dmai0920
+ * A class used to access the database layer
+ * Part of the DAO pattern
+ */
 public class CustomerDB implements CustomerDBIF
 {
+	//The connection the the database
 	private Connection connection;
 	
+	//SQL queries used for prepared statements
 	private static final String FIND_BY_PHONE = String.format("SELECT id, phone_number, country, city, zip_code, street_name, house_number, email, "
 					+ "first_name, last_name, business_name, cvr_number FROM Customer LEFT JOIN PrivateCustomer ON Customer.id = PrivateCustomer.customer_id "
 					+ "LEFT JOIN BusinessCustomer ON Customer.id = BusinessCustomer.customer_id WHERE phone_number = ?");
 	private PreparedStatement psFindByPhone;
 
+	/**
+	 * General constructor doing the connection to the database
+	 * and preparing the SQL statements
+	 */
 	public CustomerDB() throws SQLException //TODO - possibly change exception
 	{
 		connection = DBConnection.getInstance().getConnection();
@@ -25,6 +33,10 @@ public class CustomerDB implements CustomerDBIF
 		psFindByPhone = connection.prepareStatement(FIND_BY_PHONE);
 	}
 
+	/**
+	 * Gets a specific customer by phone number
+	 * @param phone
+	 */
 	@Override
 	public Customer findCustomerByPhone(String phone) throws SQLException //TODO- check exception
 	{
@@ -41,6 +53,10 @@ public class CustomerDB implements CustomerDBIF
 		return customer;
 	}
 
+	/**
+	 * Builds a Java Object from database information
+	 * @param resultSet
+	 */
 	private Customer buildObject(ResultSet resultSet) throws SQLException //TODO - check exception
 	{
 		Customer customer = null;
