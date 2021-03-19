@@ -14,7 +14,6 @@ public class Customer
 	private String zipcode;
 	private String city;
 	private String streetname;
-	//TODO change housenumber to varchar in DB
 	private String housenumber;
 	
 	/**
