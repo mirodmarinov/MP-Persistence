@@ -3,6 +3,7 @@ package control;
 import java.sql.SQLException;
 
 import model.Customer;
+import model.Product;
 
 /**
  * @author Group1 dmai0920
@@ -12,6 +13,7 @@ public class OrderController
 {
 	//All fields
 	CustomerController customerCtr;
+	ProductController productCtr;
 
 	/**
 	 * General constructor setting the fields
@@ -36,5 +38,13 @@ public class OrderController
 		customerInfo = customer.infoToArray();
 
 		return customerInfo;
+	}
+	
+	public String[] findProductByNumber(int productNumber) throws SQLException
+	{
+		String[] productInfo;
+		
+		Product product = productCtr.findCustomerByNumber(productNumber);
+		
 	}
 }
