@@ -15,41 +15,71 @@ public class OrderDB implements OrderDBIF {
 	private static final String INSERT_ORDER = String.format("INSERT INTO Order"
 			+ "VALUES (?,?,?,?,?,?)");
 	private PreparedStatement sqlCreateOrder;
+			
+	private static final String INSERT_ORDER_LINE_ITEM = String.format("INSERT INTO OrderLineItem"
+			+ "VALUES (?,?,?)");
+	private PreparedStatement sqlInsertOrderLineItem;
+	
+	private static final String UPDATE_PRODUCT_STOCK = String.format("UPDATE PRODUCT"
+			+ "SET stock = stock - ?"
+			+ "WHERE number = ?");
+	private PreparedStatement sqlUpdateProductStock;
 	
 	public OrderDB() throws SQLException {
 		connection = DBConnection.getInstance().getConnection();
 		sqlCreateOrder = connection.prepareStatement(INSERT_ORDER, Statement.RETURN_GENERATED_KEYS);
+		sqlInsertOrderLineItem = connection.prepareStatement(INSERT_ORDER_LINE_ITEM, Statement.RETURN_GENERATED_KEYS);
+		sqlUpdateProductStock = connection.prepareStatement(UPDATE_PRODUCT_STOCK);
 	}
 	
 	@Override
-	public Order create(Customer customer, ArrayList<OrderLineItem> orderLineItems) throws SQLException {
-		/*Order(int orderNumber, String orderDate, String deliveryDate, String paymentDate,
-				Status status, Customer customer, ArrayList<OrderLineItem> products, BigDecimal discount, BigDecimal totalPrice)*/
-
+	public Order create(Customer customer, ArrayList<OrderLineItem> orderLineItems, BigDecimal totalPrice, BigDecimal discount) throws SQLException
+	{
+		Order createdOrder = null;
+		int orderID;
 		DBConnection.getInstance().startTransaction();
 
 		sqlCreateOrder.setString(1, LocalDate.now().toString());
 		sqlCreateOrder.setNull(2, Types.VARCHAR);
-		sqlCreateOrder.setNull(3, Types.VARCHAR);
+		sqlCreateOrder.setString(3, "PENDING");
 		sqlCreateOrder.setInt(4, customer.getId());
 		sqlCreateOrder.setNull(5, Types.VARCHAR);
-		sqlCreateOrder.setBigDecimal(6, new BigDecimal(1));
-		sqlCreateOrder.setString(7, "");
+		sqlCreateOrder.setBigDecimal(6, discount);
+		sqlCreateOrder.setBigDecimal(7, totalPrice);
 		
-		return buildObject(null);
+		boolean executed = sqlCreateOrder.execute(INSERT_ORDER, Statement.RETURN_GENERATED_KEYS);
+		ResultSet rs = sqlCreateOrder.getGeneratedKeys();
+		if(executed && rs.next())
+		{
+			orderID = rs.getInt(1);
+			for (OrderLineItem addedProduct: orderLineItems)
+			{
+				sqlInsertOrderLineItem.setInt(1, orderID);
+				sqlInsertOrderLineItem.setInt(2, addedProduct.getProduct().getProductNumber());
+				sqlInsertOrderLineItem.setInt(2, addedProduct.getQuantity());
+				sqlInsertOrderLineItem.execute(INSERT_ORDER, Statement.RETURN_GENERATED_KEYS);
+			}
+			
+			createdOrder = new Order(orderID, LocalDate.now().toString(), null, null, Status.PENDING, customer, orderLineItems, discount, totalPrice);
+		}
+		return createdOrder;
 	}
 	
-	public Order buildObject(ResultSet rs) throws SQLException 
+	/*public Order buildObject(ResultSet rs) throws SQLException 
 	{
-		Order order = null;
-		Customer customer = null; // TODO Find by ID
-		ArrayList<OrderLineItem> products = null; // TODO ummm
+		Customer customer = new CustomerDB().findCustomerByPhone("");
+		ArrayList<OrderLineItem> products = null;
 		Status status = Status.valueOf(rs.getString("status"));
 		
-		order = new Order(rs.getInt("orderNumber"), rs.getString("orderDate"), rs.getString("deliveryDate"), rs.getString("paymentDate"),
+		return new Order(rs.getInt("orderNumber"), rs.getString("orderDate"), rs.getString("deliveryDate"), rs.getString("paymentDate"),
 						status, customer, products, (BigDecimal)rs.getObject("discount"),
 						(BigDecimal)rs.getObject("totalPrice"));
-		
-		return order;
 	}
+	
+	public OrderLineItem buildOrderLineItem(ResultSet rs) throws SQLException
+	{
+		Product product = null;
+		return new OrderLineItem(product, rs.getInt("quantity"));
+	}*/
+	
 }
