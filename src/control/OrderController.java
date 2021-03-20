@@ -34,6 +34,7 @@ public class OrderController
 	public OrderController() throws SQLException //TODO check exception
 	{
 		customerCtr = new CustomerController();
+		productCtr = new ProductController();
 		orderDB = new OrderDB();
 		orderLineItems = new ArrayList<>();
 	}

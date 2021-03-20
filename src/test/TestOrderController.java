@@ -18,6 +18,8 @@ class TestOrderController
 {
 	
 	OrderController orderCtr;
+	ProductDBStub productDB;
+	CustomerDBStub customerDB;
 
 	@BeforeAll
 	static void setUpBeforeClass() throws Exception
@@ -29,7 +31,9 @@ class TestOrderController
 	{
 		//Arrange
 		orderCtr = new OrderController();
-		orderCtr.setStub(new OrderDBStub(), new ProductDBStub(), new CustomerDBStub());
+		productDB = new ProductDBStub();
+		customerDB = new CustomerDBStub();
+		orderCtr.setStub(new OrderDBStub(), productDB, customerDB);
 	}
 
 	@AfterEach
@@ -38,7 +42,7 @@ class TestOrderController
 	}
 
 	@Test
-	void testAddProductToOrder() throws Exception
+	void shouldAddProductToOrderWithFullAmount() throws Exception
 	{
 		//Arrange
 		orderCtr.findProductByNumber(1);
@@ -47,8 +51,31 @@ class TestOrderController
 		boolean result = orderCtr.addProductToOrder(1, 20);
 		
 		//Assert
-		assertEquals(result, true);
-		//assertEquals()
+		assertEquals(true, result);
+	}
+	
+	@Test
+	void shouldThrowStockNotEnoughException() throws Exception
+	{
+		//Arrange
+		orderCtr.findProductByNumber(1);
+		
+		//Act & Assert
+		assertThrows(NotEnoughStockException.class, () -> {
+			orderCtr.addProductToOrder(1, 21);
+		  });
+	}
+	
+	@Test
+	void shouldThrowInvalidAmountException() throws Exception
+	{
+		//Arrange
+		orderCtr.findProductByNumber(1);
+		
+		//Act & Assert
+		assertThrows(InvalidAmountException.class, () -> {
+			orderCtr.addProductToOrder(1, 0);
+		  });
 	}
 	
 	@Test
