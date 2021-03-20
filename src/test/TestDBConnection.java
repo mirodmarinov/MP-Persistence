@@ -35,7 +35,7 @@ class TestDBConnection
 	}
 
 	@AfterAll
-	void tearDown() throws Exception
+	static void tearDown() throws Exception
 	{
 		DBConnection.getInstance().disconnect();
 	}
@@ -69,7 +69,7 @@ class TestDBConnection
 	}
 	
 	@Test
-	void testRetrieveInformationFromControlLayer() throws SQLException
+	void testRetrieveInformationFromControlLayer() throws SQLException, CustomerNotFoundException, InvalidPhoneNumberException
 	{
 		customerCtr.findCustomerByPhone(""); // TODO Idk we have no information in the DB
 	}

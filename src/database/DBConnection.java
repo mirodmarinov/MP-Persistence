@@ -186,6 +186,7 @@ public class DBConnection
 		try 
 		{
 			connection.close();
+			connection = null;
 		} 
 		catch (SQLException e) 
 		{

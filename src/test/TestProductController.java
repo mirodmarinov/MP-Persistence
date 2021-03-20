@@ -45,7 +45,7 @@ class TestProductController {
 	}
 
 	@Test
-	void testFindProductByNumber() throws SQLException {
+	void testFindProductByNumber() throws SQLException, InvalidProductNumberException, ProductNotFoundException {
 		Product actualProduct = new Clothing("38", "red", 1, "Sexy Pumpkin", "Topless Pumpkin", 10, 2, new BigDecimal(1000), new BigDecimal(1200), new BigDecimal(400), "USA", new Supplier(100, "name", "phone", "mail", "contry", "zip", "city", "ste", "20"));
 		Product returnedProduct = productCtr.findProductByNumber(1);
 		assertEquals(1, returnedProduct.getProductNumber());

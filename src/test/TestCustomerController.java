@@ -22,6 +22,7 @@ class TestCustomerController {
 	static void setUpBeforeClass() throws Exception {
 	}
 
+	
 	@BeforeEach
 	void setUp() throws Exception {
 		customerCtr = new CustomerController();
@@ -33,7 +34,7 @@ class TestCustomerController {
 	}
 
 	@Test
-	void testFindValidCustomerByPhoneNumber() throws SQLException
+	void testFindValidCustomerByPhoneNumber() throws SQLException, CustomerNotFoundException, InvalidPhoneNumberException
 	{
 		Customer actualCustomer = new PrivateCustomer("Jan", "Jensen", 1, "test@gmail.com", "12345678", "Denmark", "9000", "Aalborg", "Vesterbro", "79");
 		Customer returnedCustomer = customerCtr.findCustomerByPhone("12345678");
