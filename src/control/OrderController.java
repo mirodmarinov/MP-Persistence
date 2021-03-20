@@ -1,16 +1,13 @@
 package control;
 
 import java.sql.SQLException;
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 import database.OrderDB;
-import exceptions.CustomerNotFoundException;
-import exceptions.InvalidAmountException;
-import exceptions.InvalidPhoneNumberException;
-import exceptions.InvalidProductNumberException;
-import exceptions.NotEnoughStockException;
-import exceptions.ProductNotFoundException;
+import exceptions.*;
 import model.*;
+
 import java.math.BigDecimal;
 
 /**
@@ -104,7 +101,7 @@ public class OrderController
 		return info;
 	}
 	
-	/** TODO add to DCD /!\
+	/**
 	 * A method to calculate the total price from the selected products
 	 * @return total
 	 */
@@ -122,7 +119,7 @@ public class OrderController
 		return customerDiscount;
 	}
 	
-	/** TODO add to DCD /!\
+	/**
 	 * A method to calculate the total price from the selected products
 	 * @return total
 	 */
@@ -153,21 +150,63 @@ public class OrderController
 		return total;
 	}
 	
-	/** TODO add to DCD /!\
+	/**
 	 * A method to generate the invoice
 	 * @return
 	 */
 	private String generateInvoice()
 	{
-		return "";
+		BigDecimal discount = getCustomerDiscount();
+		//Header
+		StringBuilder invoice = new StringBuilder(
+			"-=-=-=-=-=-=-= Western Style =-=-=-=-=-=-=-" +"\n"+
+			"" 											  +"\n"+
+			"Address: Aalborg, Denmark" 				  +"\n"+
+			"phone: 0123456789" 					      +"\n"+
+			"" 											  +"\n"+
+			"-------------------------------------------" +"\n"+
+			"No. 123/45"								  +"\n"+
+			"-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-" +"\n");
+		//List of Products
+		for(int index = 0; index < orderLineItems.size(); index++)
+		{
+			OrderLineItem oli = orderLineItems.get(index);
+			invoice.append(
+			oli.getQuantity() + "x " + oli.getProduct().getName() + "	" + oli.getProduct().getSalesPrice().multiply(new BigDecimal(oli.getQuantity())) + "\n");
+		}
+		//Footer
+		invoice.append(
+			"-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-" +"\n"+
+			"Total: " + getTotalPrice() + " DKK"          +"\n"+
+			((discount.compareTo(new BigDecimal(0)) == 0) ? "" : "Discount: ") +"\n"+
+			"-------------------------------------------" +"\n"
+		);
+		return invoice.toString();
 	}
 	
-	/** TODO add to DCD /!\
+	
+	/**
 	 * A method to generate the delivery notes
 	 * @return
 	 */
 	private String generateDeliveryNotes()
 	{
-		return "";
+		String name;
+		if(customer instanceof BusinessCustomer){
+			name = ((BusinessCustomer)customer).getBusinessName();
+		}
+		else
+		{
+			name = ((PrivateCustomer)customer).getFirstName() + " " + ((PrivateCustomer)customer).getLastName();
+		}
+		String note = 
+			"Western Stlye"    +"\n"+
+			"Aalborg, Denmark" +"\n"+
+			""                 +"\n"+
+			"To: " + name      +"\n"+
+			"Address: " + customer.getStreetname() + " " + customer.getHousenumber() + ", " + customer.getCity() + " " + customer.getZipcode() + ", " + customer.getCountry() + "\n"+
+			"Date: " + LocalDate.now().toString() +"\n"+
+			"Signature: _____________";
+		return note;
 	}
 }
