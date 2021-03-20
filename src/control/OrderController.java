@@ -4,8 +4,12 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import database.OrderDB;
+import exceptions.CustomerNotFoundException;
 import exceptions.InvalidAmountException;
+import exceptions.InvalidPhoneNumberException;
+import exceptions.InvalidProductNumberException;
 import exceptions.NotEnoughStockException;
+import exceptions.ProductNotFoundException;
 import model.*;
 import java.math.BigDecimal;
 
@@ -39,8 +43,10 @@ public class OrderController
 	 * @param phone
 	 * @return
 	 * @throws SQLException
+	 * @throws InvalidPhoneNumberException 
+	 * @throws CustomerNotFoundException 
 	 */
-	public String[] findCustomerByPhone(String phone) throws SQLException //TODO fix exception
+	public String[] findCustomerByPhone(String phone) throws SQLException, CustomerNotFoundException, InvalidPhoneNumberException
 	{
 		String[] customerInfo;
 		
@@ -56,8 +62,10 @@ public class OrderController
 	 * @param productNumber
 	 * @return
 	 * @throws SQLException
+	 * @throws InvalidProductNumberException 
+	 * @throws ProductNotFoundException 
 	 */
-	public String[] findProductByNumber(int productNumber) throws SQLException
+	public String[] findProductByNumber(int productNumber) throws SQLException, InvalidProductNumberException, ProductNotFoundException
 	{
 		String[] productCopyInfo;
 		
@@ -67,7 +75,14 @@ public class OrderController
 		
 		return productCopyInfo;
 	}
-	
+	/**
+	 *	Adding a product to the ArrayList of OrderLineItems 
+	 * @param productNumber
+	 * @param amount
+	 * @return a boolean success value
+	 * @throws InvalidAmountException
+	 * @throws NotEnoughStockException
+	 */
 	public boolean addProductToOrder(int productNumber, int amount) throws InvalidAmountException, NotEnoughStockException
 	{
 		boolean added = false;
@@ -95,7 +110,7 @@ public class OrderController
 	 */
 	private BigDecimal getCustomerDiscount()
 	{
-		return customer.
+		return null;
 	}
 	
 	/** TODO add to DCD /!\
