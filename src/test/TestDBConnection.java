@@ -5,6 +5,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import java.sql.*;
 
 import org.junit.jupiter.api.*;
+import org.junit.jupiter.api.Order;
 
 import database.*;
 import model.*;
@@ -16,11 +17,12 @@ class TestDBConnection
 	static Connection connection;
 	CustomerController customerCtr;
 	CustomerDB customerDB;
+	Customer customer;
 	
 	@BeforeAll
 	static void setUpBeforeClass() throws Exception
 	{
-		 connection = DBConnection.getInstance().getConnection();
+		connection = DBConnection.getInstance().getConnection();
 	}
 
 	@BeforeEach
@@ -39,11 +41,12 @@ class TestDBConnection
 
 	
 	@Test
+	@Order(0)
 	void testGetConnection() 
 	{
 		try 
 		{
-			Connection connection = DBConnection.getInstance().getConnection();
+			connection = DBConnection.getInstance().getConnection();
 			assertNotNull(connection);
 		} 
 		catch(Exception e)
@@ -53,16 +56,44 @@ class TestDBConnection
 	}
 	
 	@Disabled
-	void testInsertingIntoDB()
+	@Order(1)
+	void testInsertingIntoDB() throws SQLException
 	{
-		// TODO We don't have inserting in any of the DAOs iirc
-		//customerDB.create(...)
+		
+		String sql = "INSERT INTO Customer VALUES('01', 'Denmark', 'Aalborg', '9000','Annerbergvej', '110', 'anneberg@info.dk')";
+		//String sqlinsertToPrivateQuestomer = "INSERT INTO PrivateCustomer VALUES(6, 'Hanne', 'Thejlgård')";
+		Statement s = connection.createStatement();
+		assertEquals(s.executeUpdate(sql), 1);
+		ResultSet generatedKeys = s.getGeneratedKeys();
+		if (generatedKeys.next())
+		{
+			String sqlinsertToPrivateQuestomer = "INSERT INTO PrivateCustomer VALUES("+ generatedKeys.getLong(1) + ", 'Hanne', 'Thejlgård')";
+			assertEquals(s.executeUpdate(sqlinsertToPrivateQuestomer), 1);
+		}
+		else
+		{
+			fail();
+		}
+		
+		
 	}
 	
-	@Disabled
+	@Test
+	@Order(2)
 	void testRetrieveInformationFromDatabaseLayer() throws SQLException
 	{
-		customerDB.findCustomerByPhone(""); // TODO Idk we have no information in the DB
+		customer = (PrivateCustomer) customerDB.findCustomerByPhone("01"); // TODO Idk we have no information in the DB
+		assertNotNull(customer);
+	}
+	
+	@Test
+	@Order(3)
+	void deleteDataFromDatabase() throws SQLException
+	{
+		Statement s = connection.createStatement();
+		assertEquals(1,s.executeUpdate("DELETE FROM Customer WHERE id = " + customer.getId()));
+		assertEquals(1,s.executeUpdate("DELETE FROM PrivateCustomer WHERE customer_id = " + customer.getId()));
+		
 	}
 	
 	@Disabled
@@ -72,6 +103,7 @@ class TestDBConnection
 	}
 	
 	@Test
+	@Order(4)
 	void testInvalidLoginCredentialsDoesntConnectAndThrowsSQLException()
 	{
 		String DRIVER_CLASS = "com.microsoft.sqlserver.jdbc.SQLServerDriver";
@@ -90,8 +122,8 @@ class TestDBConnection
 			try 
 			{
 				Class.forName(DRIVER_CLASS);
+				//System.out.println("Connection string is: " + connectionString.substring(0, connectionString.length() - PASSWORD.length()) + "....");
 				connection = DriverManager.getConnection(connectionString);
-				System.out.println("Connection string is: " + connectionString.substring(0, connectionString.length() - PASSWORD.length()) + "....");
 				System.out.println("Connected");
 			} 
 			catch (ClassNotFoundException e) 

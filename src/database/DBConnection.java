@@ -39,8 +39,8 @@ public class DBConnection
 		try 
 		{
 			Class.forName(DRIVER_CLASS);
-			connection = DriverManager.getConnection(connectionString);
 			System.out.println("Connection string is: " + connectionString.substring(0, connectionString.length() - PASSWORD.length()) + "....");
+			connection = DriverManager.getConnection(connectionString);
 			System.out.println("Connected");
 		} 
 		catch (ClassNotFoundException e) 
