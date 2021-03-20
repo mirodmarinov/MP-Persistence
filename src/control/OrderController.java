@@ -3,11 +3,11 @@ package control;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import database.OrderDB;
 import exceptions.InvalidAmountException;
 import exceptions.NotEnoughStockException;
-import model.Customer;
-import model.OrderLineItem;
-import model.Product;
+import model.*;
+import java.math.BigDecimal;
 
 /**
  * @author Group1 dmai0920
@@ -20,6 +20,7 @@ public class OrderController
 	ProductController productCtr;
 	Product product;
 	Customer customer;
+	OrderDB orderDB;
 	ArrayList<OrderLineItem> orderLineItems;
 
 	/**
@@ -29,6 +30,7 @@ public class OrderController
 	public OrderController() throws SQLException //TODO check exception
 	{
 		customerCtr = new CustomerController();
+		orderDB = new OrderDB();
 		orderLineItems = new ArrayList<>();
 	}
 
@@ -80,10 +82,53 @@ public class OrderController
 		return added;
 	}
 	
-	public String[] createOrder()
-	//Make sure you do not establish a connection in this
+	public String[] createOrder() throws SQLException
 	{
-		
-		return null;
+		Order order = orderDB.create(customer, orderLineItems, getCustomerDiscount(), getTotalPrice()); //TODO Check discount
+		String[] info = {generateInvoice(), generateDeliveryNotes()};
+		return info;
+	}
+	
+	/** TODO add to DCD /!\
+	 * A method to calculate the total price from the selected products
+	 * @return total
+	 */
+	private BigDecimal getCustomerDiscount()
+	{
+		return customer.
+	}
+	
+	/** TODO add to DCD /!\
+	 * A method to calculate the total price from the selected products
+	 * @return total
+	 */
+	private BigDecimal getTotalPrice()
+	{
+		BigDecimal total = new BigDecimal(0);
+		for(int index = 0; index < orderLineItems.size(); index++)
+		{
+			Product product = orderLineItems.get(index).getProduct();
+			BigDecimal quantity = new BigDecimal(orderLineItems.get(index).getQuantity());
+			total.add(product.getSalesPrice()).multiply(quantity);
+		}
+		return total;
+	}
+	
+	/** TODO add to DCD /!\
+	 * A method to generate the invoice
+	 * @return
+	 */
+	private String generateInvoice()
+	{
+		return "";
+	}
+	
+	/** TODO add to DCD /!\
+	 * A method to generate the delivery notes
+	 * @return
+	 */
+	private String generateDeliveryNotes()
+	{
+		return "";
 	}
 }

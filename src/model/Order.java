@@ -19,6 +19,7 @@ public class Order
 	private BigDecimal discount;
 	private BigDecimal totalPrice;
 	private Status status; //The status of the order
+	public static final BigDecimal DELIVERY_FEE = new BigDecimal(45);
 	
 	/**
 	 * General Constructor with all fields

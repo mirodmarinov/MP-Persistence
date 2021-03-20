@@ -1,5 +1,7 @@
 package model;
 
+import java.math.BigDecimal;
+
 /**
  * @author Group1 dmai0920
  * This class represents the Customer in the system
@@ -15,6 +17,7 @@ public abstract class Customer //TODO- add the fact that its abstract to the dia
 	private String city;
 	private String streetname;
 	private String housenumber;
+	private BigDecimal threshold;
 	
 	/**
 	 * General constructor with all parameters for the Customer object
@@ -114,6 +117,15 @@ public abstract class Customer //TODO- add the fact that its abstract to the dia
 		this.housenumber = housenumber;
 	}
 	
+	public BigDecimal getThreshold() 
+	{
+		return threshold;
+	}
+
+	public void setThreshold(BigDecimal threshold) 
+	{
+		this.threshold = threshold;
+	}
 	public abstract String[] infoToArray(); //TODO - add this to the diagrams
 	
 }

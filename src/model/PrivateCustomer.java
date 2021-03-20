@@ -1,5 +1,7 @@
 package model;
 
+import java.math.BigDecimal;
+
 /**
  * @author Group1 dmai0920
  * A subclass to represent the Private type for the customer
@@ -9,6 +11,7 @@ public class PrivateCustomer extends Customer
 	//All the new fields
 	private String firstName;
 	private String lastName;
+	private static final BigDecimal THRESHOLD = new BigDecimal(1500);
 	
 	/**
 	 * Generic constructor with all attributes, also calling the super class
@@ -19,6 +22,7 @@ public class PrivateCustomer extends Customer
 		super(id, email, phoneNumber, country, zipcode, city, streetname, housenumber);
 		this.firstName = firstName;
 		this.lastName = lastName;
+		super.setThreshold(THRESHOLD);
 	}
 	
 	/**
