@@ -1,5 +1,6 @@
 package test;
 
+import static org.junit.Assert.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.sql.SQLException;
@@ -40,7 +41,6 @@ class TestCustomerController {
 		Customer returnedCustomer = customerCtr.findCustomerByPhone("12345678");
 		assertEquals(1, returnedCustomer.getId());
 		assertArrayEquals(returnedCustomer.infoToArray(), actualCustomer.infoToArray());
-		assertEquals(actualCustomer, returnedCustomer);
 	}
 
 	@Test

@@ -7,6 +7,7 @@ import java.sql.*;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import database.*;
@@ -68,7 +69,7 @@ class TestDBConnection
 		customerDB.findCustomerByPhone(""); // TODO Idk we have no information in the DB
 	}
 	
-	@Test
+	@Disabled
 	void testRetrieveInformationFromControlLayer() throws SQLException, CustomerNotFoundException, InvalidPhoneNumberException
 	{
 		customerCtr.findCustomerByPhone(""); // TODO Idk we have no information in the DB

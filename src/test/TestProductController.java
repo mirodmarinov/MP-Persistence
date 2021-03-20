@@ -50,7 +50,6 @@ class TestProductController {
 		Product returnedProduct = productCtr.findProductByNumber(1);
 		assertEquals(1, returnedProduct.getProductNumber());
 		assertArrayEquals(returnedProduct.infoToArray(), actualProduct.infoToArray());
-		assertEquals(actualProduct, returnedProduct);
 	}
 	
 	@Test
