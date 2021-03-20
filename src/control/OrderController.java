@@ -74,14 +74,16 @@ public class OrderController
 		{
 			OrderLineItem orderLineItem = new OrderLineItem(this.product, amount);
 			added = orderLineItems.add(orderLineItem);
+			this.product = null;
 		}
 		
 		return added;
 	}
-	//TODO - not sure if finished, check later
 	
 	public String[] createOrder()
+	//Make sure you do not establish a connection in this
 	{
+		
 		return null;
 	}
 }

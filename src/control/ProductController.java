@@ -33,4 +33,9 @@ public class ProductController
 		
 		return productCopy;
 	}
+	
+	public void setProductDB(ProductDBIF productDB)
+	{
+		this.productDB = productDB;
+	}
 }
