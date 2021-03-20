@@ -12,6 +12,7 @@ public class BusinessCustomer extends Customer
 	private int cvrNumber;
 	private String businessName;
 	private static final BigDecimal THRESHOLD = new BigDecimal(2500);
+	public static final BigDecimal DISCOUNT = new BigDecimal(100);
 	
 	/**
 	 * Generic constructor with all attributes, also calling the super class

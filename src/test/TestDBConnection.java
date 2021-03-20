@@ -4,11 +4,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import java.sql.*;
 
-import org.junit.jupiter.api.AfterAll;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Disabled;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 
 import database.*;
 import model.*;
@@ -56,14 +52,14 @@ class TestDBConnection
 		}	
 	}
 	
-	@Test
+	@Disabled
 	void testInsertingIntoDB()
 	{
 		// TODO We don't have inserting in any of the DAOs iirc
 		//customerDB.create(...)
 	}
 	
-	@Test
+	@Disabled
 	void testRetrieveInformationFromDatabaseLayer() throws SQLException
 	{
 		customerDB.findCustomerByPhone(""); // TODO Idk we have no information in the DB

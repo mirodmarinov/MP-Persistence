@@ -108,9 +108,18 @@ public class OrderController
 	 * A method to calculate the total price from the selected products
 	 * @return total
 	 */
-	private BigDecimal getCustomerDiscount()
-	{
-		return null;
+	private BigDecimal getCustomerDiscount() 
+	{ 
+		BigDecimal customerDiscount = new BigDecimal(0);
+		if (customer instanceof PrivateCustomer) 
+		{
+			customerDiscount = Order.DELIVERY_FEE;
+		}
+		else if (customer instanceof PrivateCustomer)
+		{
+			
+		}
+		return customerDiscount;
 	}
 	
 	/** TODO add to DCD /!\
@@ -125,6 +134,21 @@ public class OrderController
 			Product product = orderLineItems.get(index).getProduct();
 			BigDecimal quantity = new BigDecimal(orderLineItems.get(index).getQuantity());
 			total.add(product.getSalesPrice()).multiply(quantity);
+		}
+		
+		//check if the current customer qualifies for a discount - i.e the threshold is less than the current total.
+		if (customer.getThreshold().compareTo(total) == -1)
+		{
+			//calculating discount for privateCustomer
+			if (customer instanceof PrivateCustomer) 
+			{
+				total.subtract(Order.DELIVERY_FEE);
+			}
+			//calculating discount for BusinessCustomers
+			else if (customer instanceof BusinessCustomer)
+			{
+				total.subtract(BusinessCustomer.DISCOUNT);
+			}
 		}
 		return total;
 	}
