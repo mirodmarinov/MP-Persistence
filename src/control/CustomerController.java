@@ -40,7 +40,7 @@ public class CustomerController
 		}
 		try
 		{
-			if (phone.startsWith("+"))//i changed this
+			if (phone.startsWith("+"))
 			{	
 				Integer.parseInt(phone.substring(1));
 			}
