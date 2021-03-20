@@ -37,7 +37,7 @@ class TestDBConnection
 	@AfterAll
 	static void tearDown() throws Exception
 	{
-		DBConnection.getInstance().disconnect();
+		
 	}
 
 	
