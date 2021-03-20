@@ -14,12 +14,14 @@ import model.*;
  *
  */
 public class ProductDBStub implements ProductDBIF {
+	
+	public static Product pumpkin = new Clothing("38", "red", 1, "Sexy Pumpkin", "Topless Pumpkin", 20, 2,new BigDecimal(1000), new BigDecimal(1200), new BigDecimal(400), "USA", new Supplier(100, "name", "phone", "mail", "contry", "zip", "city", "ste", "20"));
 
 	@Override
 	public Product findProductByNumber(int productNumber) throws SQLException {
 		if(productNumber == 1)
 		{
-			return new Clothing("38", "red", 1, "Sexy Pumpkin", "Topless Pumpkin", 10, 2,new BigDecimal(1000), new BigDecimal(1200), new BigDecimal(400), "USA", new Supplier(100, "name", "phone", "mail", "contry", "zip", "city", "ste", "20"));
+			return pumpkin;
 		}
 		else if(productNumber == 2)
 		{

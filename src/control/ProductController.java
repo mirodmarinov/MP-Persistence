@@ -42,7 +42,7 @@ public class ProductController
 		return productCopy;
 	}
 	
-	public void setProductDB(ProductDBIF productDB)
+	public void setStub(ProductDBIF productDB)
 	{
 		this.productDB = productDB;
 	}

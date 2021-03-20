@@ -37,7 +37,7 @@ class TestProductController {
 	@BeforeEach
 	void setUp() throws Exception {
 		productCtr = new ProductController();
-		productCtr.setProductDB(new ProductDBStub());
+		productCtr.setStub(new ProductDBStub());
 	}
 
 	@AfterEach

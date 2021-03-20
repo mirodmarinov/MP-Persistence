@@ -4,7 +4,10 @@ import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
+import database.CustomerDBIF;
 import database.OrderDB;
+import database.OrderDBIF;
+import database.ProductDBIF;
 import exceptions.*;
 import model.*;
 
@@ -21,7 +24,7 @@ public class OrderController
 	ProductController productCtr;
 	Product product;
 	Customer customer;
-	OrderDB orderDB;
+	OrderDBIF orderDB;
 	ArrayList<OrderLineItem> orderLineItems;
 
 	/**
@@ -208,5 +211,13 @@ public class OrderController
 			"Date: " + LocalDate.now().toString() +"\n"+
 			"Signature: _____________";
 		return note;
+	}
+	
+	public void setStub(OrderDBIF orderDB, ProductDBIF productDB, CustomerDBIF customerDB)
+	{
+		customerCtr.setStub(customerDB);
+		productCtr.setStub(productDB);
+		this.orderDB = orderDB;
+		
 	}
 }

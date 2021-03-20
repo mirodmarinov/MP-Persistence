@@ -27,7 +27,7 @@ class TestCustomerController {
 	@BeforeEach
 	void setUp() throws Exception {
 		customerCtr = new CustomerController();
-		customerCtr.setCustomerDB(new CustomerDBStub());
+		customerCtr.setStub(new CustomerDBStub());
 	}
 
 	@AfterEach

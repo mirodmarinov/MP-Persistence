@@ -67,7 +67,7 @@ public class CustomerController
 	 * Used for testing purposes, using Scaffolding and customerDB.
 	 * @param customerDB
 	 */
-	public void setCustomerDB (CustomerDBIF customerDB)
+	public void setStub(CustomerDBIF customerDB)
 	{
 		this.customerDB = customerDB;
 	}
