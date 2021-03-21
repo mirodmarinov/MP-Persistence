@@ -30,7 +30,9 @@ public class DBConnection
 	private static final String PASSWORD = "Password1!";
 	
 	/**
-	 * Constructor establishing the connection
+	 * Constructor establishing the connection.
+	 * Throws an exception if the connection fails
+	 * 
 	 */
 	private DBConnection() 
 	{
@@ -48,6 +50,7 @@ public class DBConnection
 			System.err.println("Could not load JDBC driver");
 			e.printStackTrace();
 		} 
+		
 		catch (SQLException e) 
 		{
 			System.err.println("Could not connect to database " + DATABASE_NAME + "@" + SERVER_ADDRESS + ":" + SERVER_PORT + " as user " + USER_NAME + " using password ******");

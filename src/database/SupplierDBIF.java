@@ -11,5 +11,11 @@ import model.Supplier;
  */
 public interface SupplierDBIF
 {
+	/**
+	 * Used as a support class for the SupplierDB class
+	 * @param id
+	 * @return
+	 * @throws SQLException
+	 */
 	Supplier findSupplierById(int id) throws SQLException; //TODO - check exception
 }

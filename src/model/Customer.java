@@ -126,6 +126,11 @@ public abstract class Customer //TODO- add the fact that its abstract to the dia
 	{
 		this.threshold = threshold;
 	}
+	
+	/**
+	 * Used as a support method to its subclasses. - PrivateCustomer and BusinessCustomer
+	 * @return
+	 */
 	public abstract String[] infoToArray(); //TODO - add this to the diagrams
 	
 }

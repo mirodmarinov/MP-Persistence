@@ -14,7 +14,7 @@ public enum Category
 	//Category numbers field
 	private int categoryID;
 	
-	//COnstructor setting the ID
+	//Constructor setting the ID
 	Category(int categoryID)
 	{
 		this.categoryID = categoryID;

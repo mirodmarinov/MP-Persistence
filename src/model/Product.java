@@ -153,5 +153,9 @@ public abstract class Product
 		this.category = category;
 	}
 	
+	/**
+	 * Used as a support method to its subclasses - Clothing, Equipment & GunReplica
+	 * @return
+	 */
 	public abstract String[] infoToArray(); //TODO- add to diagrams
 }

@@ -9,5 +9,6 @@ import model.Customer;
 
 public interface OrderDBIF {
 
+	//used to support the OrderDB class 
 	Order create(Customer customer, ArrayList<OrderLineItem> orderLineItems,  BigDecimal totalPrice, BigDecimal discount) throws SQLException;
 }

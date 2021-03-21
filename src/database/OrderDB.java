@@ -31,7 +31,9 @@ public class OrderDB implements OrderDBIF {
 		sqlInsertOrderLineItem = connection.prepareStatement(INSERT_ORDER_LINE_ITEM, Statement.RETURN_GENERATED_KEYS);
 		sqlUpdateProductStock = connection.prepareStatement(UPDATE_PRODUCT_STOCK);
 	}
-	
+	/**
+	 * Creates an order in the database
+	 */
 	@Override
 	public Order create(Customer customer, ArrayList<OrderLineItem> orderLineItems, BigDecimal totalPrice, BigDecimal discount) throws SQLException
 	{

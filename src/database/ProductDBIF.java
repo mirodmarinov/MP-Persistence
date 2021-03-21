@@ -11,5 +11,11 @@ import model.Product;
  */
 public interface ProductDBIF
 {
+	/**
+	 * Used as a support class for the ProductDB and the ProductDBStub
+	 * @param productNumber
+	 * @return
+	 * @throws SQLException
+	 */
 	Product findProductByNumber(int productNumber) throws SQLException; //TODO - check exceptions
 }

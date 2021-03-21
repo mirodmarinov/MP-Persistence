@@ -2,7 +2,7 @@ package exceptions;
 
 /**
  * @author Group1 dmai0920
- * A class to hold the different exception messages for easy use
+ * A class to hold the different exception messages for easy usage
  */
 public class ExceptionMessages
 {

@@ -12,6 +12,10 @@ import model.PrivateCustomer;
  */
 public class CustomerDBStub implements CustomerDBIF {
 
+	/**
+	 * This method is used for testing purposes.
+	 * Return a fictional private and business customer instead of accessing the database
+	 */
 	@Override
 	public Customer findCustomerByPhone(String phone) throws SQLException
 	{
