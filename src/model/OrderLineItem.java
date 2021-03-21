@@ -13,7 +13,7 @@ import exceptions.NotEnoughStockException;
 public class OrderLineItem
 {
 	//Fields of OrderLineItem
-	private int amount; //TODO rename in diagrams
+	private int amount;
 	private Product product;
 	
 	/**

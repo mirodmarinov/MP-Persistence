@@ -18,19 +18,19 @@ public class Order
 	private ArrayList<OrderLineItem> products;
 	private BigDecimal discount;
 	private BigDecimal totalPrice;
-	private Status status; //The status of the order
+	private Status deliveryStatus; //The status of the order
 	public static final BigDecimal DELIVERY_FEE = new BigDecimal(45);
 	
 	/**
 	 * General Constructor with all fields
 	 */
-	public Order(int orderNumber, String orderDate, String deliveryDate, String paymentDate, Status status, Customer customer, ArrayList<OrderLineItem> products, BigDecimal discount, BigDecimal totalPrice)
+	public Order(int orderNumber, String orderDate, String deliveryDate, String paymentDate, Status deliveryStatus, Customer customer, ArrayList<OrderLineItem> products, BigDecimal discount, BigDecimal totalPrice)
 	{
 		this.orderNumber = orderNumber;
 		this.orderDate = orderDate;
 		this.deliveryDate = deliveryDate;
 		this.paymentDate = paymentDate;
-		this.status = status;
+		this.deliveryStatus = deliveryStatus;
 		this.customer = customer;
 		this.products = products;
 		this.discount = discount;
@@ -82,12 +82,12 @@ public class Order
 
 	public Status getStatus()
 	{
-		return status;
+		return deliveryStatus;
 	}
 
 	public void setStatus(Status status)
 	{
-		this.status = status;
+		this.deliveryStatus = status;
 	}
 
 	public Customer getCustomer()
