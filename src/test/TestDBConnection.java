@@ -12,12 +12,13 @@ import model.*;
 import control.*;
 import exceptions.*;
 
+@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 class TestDBConnection
 {
 	static Connection connection;
 	CustomerController customerCtr;
 	CustomerDB customerDB;
-	Customer customer;
+	static Customer customer;
 	
 	@BeforeAll
 	static void setUpBeforeClass() throws Exception
@@ -55,20 +56,21 @@ class TestDBConnection
 		}	
 	}
 	
-	@Disabled
+	@Test
 	@Order(1)
 	void testInsertingIntoDB() throws SQLException
 	{
 		
-		String sql = "INSERT INTO Customer VALUES('01', 'Denmark', 'Aalborg', '9000','Annerbergvej', '110', 'anneberg@info.dk')";
+		String sql = "INSERT INTO Customer VALUES('11111111', 'Denmark', 'Aalborg', '9000','Annerbergvej', '110', 'anneberg@info.dk')";
 		//String sqlinsertToPrivateQuestomer = "INSERT INTO PrivateCustomer VALUES(6, 'Hanne', 'Thejlgård')";
-		Statement s = connection.createStatement();
-		assertEquals(s.executeUpdate(sql), 1);
+		PreparedStatement s = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+		assertEquals(s.executeUpdate(), 1);
 		ResultSet generatedKeys = s.getGeneratedKeys();
 		if (generatedKeys.next())
 		{
 			String sqlinsertToPrivateQuestomer = "INSERT INTO PrivateCustomer VALUES("+ generatedKeys.getLong(1) + ", 'Hanne', 'Thejlgård')";
-			assertEquals(s.executeUpdate(sqlinsertToPrivateQuestomer), 1);
+			PreparedStatement sPrivate = connection.prepareStatement(sqlinsertToPrivateQuestomer);
+			assertEquals(sPrivate.executeUpdate(), 1);
 		}
 		else
 		{
@@ -82,28 +84,29 @@ class TestDBConnection
 	@Order(2)
 	void testRetrieveInformationFromDatabaseLayer() throws SQLException
 	{
-		customer = (PrivateCustomer) customerDB.findCustomerByPhone("01"); // TODO Idk we have no information in the DB
+		customer = /*(PrivateCustomer) */customerDB.findCustomerByPhone("11111111"); // TODO Idk we have no information in the DB
 		assertNotNull(customer);
 	}
 	
 	@Test
 	@Order(3)
-	void deleteDataFromDatabase() throws SQLException
-	{
-		Statement s = connection.createStatement();
-		assertEquals(1,s.executeUpdate("DELETE FROM Customer WHERE id = " + customer.getId()));
-		assertEquals(1,s.executeUpdate("DELETE FROM PrivateCustomer WHERE customer_id = " + customer.getId()));
-		
-	}
-	
-	@Disabled
 	void testRetrieveInformationFromControlLayer() throws SQLException, CustomerNotFoundException, InvalidPhoneNumberException
 	{
-		customerCtr.findCustomerByPhone(""); // TODO Idk we have no information in the DB
+		assertNotNull(customerCtr.findCustomerByPhone("11111111"));
 	}
 	
 	@Test
 	@Order(4)
+	void deleteDataFromDatabase() throws SQLException
+	{
+		Statement s = connection.createStatement();
+		assertEquals(1,s.executeUpdate("DELETE FROM PrivateCustomer WHERE customer_id = " + customer.getId()));
+		assertEquals(1,s.executeUpdate("DELETE FROM Customer WHERE id = " + customer.getId()));
+		
+	}
+	
+	@Test
+	@Order(5)
 	void testInvalidLoginCredentialsDoesntConnectAndThrowsSQLException()
 	{
 		String DRIVER_CLASS = "com.microsoft.sqlserver.jdbc.SQLServerDriver";
@@ -124,7 +127,7 @@ class TestDBConnection
 				Class.forName(DRIVER_CLASS);
 				//System.out.println("Connection string is: " + connectionString.substring(0, connectionString.length() - PASSWORD.length()) + "....");
 				connection = DriverManager.getConnection(connectionString);
-				System.out.println("Connected");
+				System.out.println("Test Connected");
 			} 
 			catch (ClassNotFoundException e) 
 			{
