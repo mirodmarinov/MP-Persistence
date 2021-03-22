@@ -39,12 +39,12 @@ public class OrderLineItem
 	/**
 	 * Getters and setters for all fields
 	 */
-	public int getQuantity()
+	public int getAmount()
 	{
 		return amount;
 	}
 
-	public void setQuantity(int quantity)
+	public void setAmount(int quantity)
 	{
 		this.amount = quantity;
 	}
