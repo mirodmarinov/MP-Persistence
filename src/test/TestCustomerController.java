@@ -33,6 +33,7 @@ class TestCustomerController {
 	void tearDown() throws Exception {
 	}
 
+	// FC1
 	@Test
 	void testFindValidCustomerByPhoneNumber() throws SQLException, CustomerNotFoundException, InvalidPhoneNumberException
 	{
@@ -42,24 +43,28 @@ class TestCustomerController {
 		assertArrayEquals(returnedCustomer.infoToArray(), actualCustomer.infoToArray());
 	}
 
+	// FC2
 	@Test
 	void testCustomerWithPhone12345677DoesntExist()
 	{
 		assertThrows(CustomerNotFoundException.class , () -> {customerCtr.findCustomerByPhone("12345677");});
 	}
-	
+
+	// FC3
 	@Test
 	void testInvalidCharactersInPhoneThrowsException()
 	{
 		assertThrows(InvalidPhoneNumberException.class , () -> {customerCtr.findCustomerByPhone("Nails, hair, hips, heels");});
 	}
 	
+	//FC4
 	@Test
 	void testPhoneNumberTooLongShouldThrowException()
 	{
 		assertThrows(InvalidPhoneNumberException.class , () -> {customerCtr.findCustomerByPhone("12345678912345678");});
 	}
 
+	//FC5
 	@Test
 	void testPhoneNumberTooShortShouldThrowException()
 	{

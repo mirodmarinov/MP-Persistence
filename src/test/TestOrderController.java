@@ -38,8 +38,9 @@ class TestOrderController
 	{
 	}
 
+	// APO1 
 	@Test
-	void shouldAddProductToOrderWithFullAmount() throws Exception
+	void shouldAddProductToOrderWithMaxAmount() throws Exception
 	{
 		//Arrange
 		orderCtr.findProductByNumber(1);
@@ -51,8 +52,9 @@ class TestOrderController
 		assertEquals(true, result);
 	}
 	
+	// APO2
 	@Test
-	void shouldThrowStockNotEnoughException() throws Exception
+	void addingMoreThanInStockShouldThrowStockNotEnoughException() throws Exception
 	{
 		//Arrange
 		orderCtr.findProductByNumber(1);
@@ -63,6 +65,7 @@ class TestOrderController
 		  });
 	}
 	
+	// APO3
 	@Test
 	void shouldThrowInvalidAmountException() throws Exception
 	{
