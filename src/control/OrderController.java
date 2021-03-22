@@ -118,7 +118,7 @@ public class OrderController
 		}
 		else if (customer instanceof PrivateCustomer)
 		{
-			
+			//TODO - what :D
 		}
 		return customerDiscount;
 	}
