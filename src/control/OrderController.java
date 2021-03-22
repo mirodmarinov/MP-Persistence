@@ -20,12 +20,13 @@ import java.math.BigDecimal;
 public class OrderController
 {
 	//All fields
-	CustomerController customerCtr;
-	ProductController productCtr;
-	Product product;
-	Customer customer;
-	OrderDBIF orderDB;
-	ArrayList<OrderLineItem> orderLineItems;
+	private CustomerController customerCtr;
+	private ProductController productCtr;
+	private Product product;
+	private Customer customer;
+	private OrderDBIF orderDB;
+	private ArrayList<OrderLineItem> orderLineItems;
+	private BigDecimal discount;
 
 	/**
 	 * General constructor setting the fields
@@ -37,6 +38,7 @@ public class OrderController
 		productCtr = new ProductController();
 		orderDB = new OrderDB();
 		orderLineItems = new ArrayList<>();
+		discount = new BigDecimal(0);
 	}
 
 	/**
@@ -100,7 +102,7 @@ public class OrderController
 	
 	public String[] createOrder() throws SQLException
 	{
-		orderDB.create(customer, orderLineItems, getCustomerDiscount(), getTotalPrice()); //TODO Check discount
+		orderDB.create(customer, orderLineItems, getCustomerDiscount(), getTotalPrice());
 		String[] info = {generateInvoice(), generateDeliveryNotes()};
 		return info;
 	}
@@ -112,13 +114,19 @@ public class OrderController
 	private BigDecimal getCustomerDiscount() 
 	{ 
 		BigDecimal customerDiscount = new BigDecimal(0);
-		if (customer instanceof PrivateCustomer) 
+		//check if the current customer qualifies for a discount - i.e the threshold is less than the current total.
+		if (customer.getThreshold().compareTo(getTotalPrice()) == -1)
 		{
-			customerDiscount = Order.DELIVERY_FEE;
-		}
-		else if (customer instanceof PrivateCustomer)
-		{
-			//TODO - what :D
+			//calculating discount for privateCustomer
+			if (customer instanceof PrivateCustomer) 
+			{
+				customerDiscount = Order.DELIVERY_FEE;
+			}
+			//calculating discount for BusinessCustomers
+			else if (customer instanceof BusinessCustomer)
+			{
+				customerDiscount = BusinessCustomer.DISCOUNT;
+			}
 		}
 		return customerDiscount;
 	}
@@ -137,20 +145,6 @@ public class OrderController
 			total.add(product.getSalesPrice()).multiply(amount);
 		}
 		
-		//check if the current customer qualifies for a discount - i.e the threshold is less than the current total.
-		if (customer.getThreshold().compareTo(total) == -1)
-		{
-			//calculating discount for privateCustomer
-			if (customer instanceof PrivateCustomer) 
-			{
-				total.subtract(Order.DELIVERY_FEE);
-			}
-			//calculating discount for BusinessCustomers
-			else if (customer instanceof BusinessCustomer)
-			{
-				total.subtract(BusinessCustomer.DISCOUNT);
-			}
-		}
 		return total;
 	}
 	
