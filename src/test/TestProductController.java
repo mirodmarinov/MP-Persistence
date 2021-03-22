@@ -48,14 +48,9 @@ class TestProductController
 
 	// FP1
 	@Test
-<<<<<<< Updated upstream
-	void testFindProductByNumber() throws SQLException, InvalidProductNumberException, ProductNotFoundException {
-		Product actualProduct = new Clothing("38", "red", 1, "Sexy Lasso", "Long enough", 20, 2,new BigDecimal(1000), new BigDecimal(1200), new BigDecimal(400), "USA", new Supplier(100, "name", "phone", "mail", "contry", "zip", "city", "ste", "20"));
-=======
 	void testFindProductByNumber() throws SQLException, InvalidProductNumberException, ProductNotFoundException 
 	{
-		Product actualProduct = new Clothing("38", "red", 1, "Sexy Pumpkin", "Topless Pumpkin", 20, 2, new BigDecimal(1000), new BigDecimal(1200), new BigDecimal(400), "USA", new Supplier(100, "name", "phone", "mail", "contry", "zip", "city", "ste", "20"));
->>>>>>> Stashed changes
+		Product actualProduct = new Clothing("38", "red", 1, "Sexy Lasso", "Long enough", 20, 2,new BigDecimal(1000), new BigDecimal(1200), new BigDecimal(400), "USA", new Supplier(100, "name", "phone", "mail", "contry", "zip", "city", "ste", "20"));
 		Product returnedProduct = productCtr.findProductByNumber(1);
 		assertEquals(1, returnedProduct.getProductNumber());
 		assertArrayEquals(returnedProduct.infoToArray(), actualProduct.infoToArray());
