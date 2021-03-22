@@ -133,8 +133,8 @@ public class OrderController
 		for(int index = 0; index < orderLineItems.size(); index++)
 		{
 			Product product = orderLineItems.get(index).getProduct();
-			BigDecimal quantity = new BigDecimal(orderLineItems.get(index).getQuantity());
-			total.add(product.getSalesPrice()).multiply(quantity);
+			BigDecimal amount = new BigDecimal(orderLineItems.get(index).getAmount());
+			total.add(product.getSalesPrice()).multiply(amount);
 		}
 		
 		//check if the current customer qualifies for a discount - i.e the threshold is less than the current total.
@@ -176,7 +176,7 @@ public class OrderController
 		{
 			OrderLineItem oli = orderLineItems.get(index);
 			invoice.append(
-			oli.getQuantity() + "x " + oli.getProduct().getName() + "	" + oli.getProduct().getSalesPrice().multiply(new BigDecimal(oli.getQuantity())) + "\n");
+			oli.getAmount() + "x " + oli.getProduct().getName() + "	" + oli.getProduct().getSalesPrice().multiply(new BigDecimal(oli.getAmount())) + "\n");
 		}
 		//Footer
 		invoice.append(

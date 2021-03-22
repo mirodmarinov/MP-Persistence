@@ -61,10 +61,10 @@ public class OrderDB implements OrderDBIF {
 				{
 					sqlInsertOrderLineItem.setInt(1, orderID);
 					sqlInsertOrderLineItem.setInt(2, addedProduct.getProduct().getProductNumber());
-					sqlInsertOrderLineItem.setInt(2, addedProduct.getQuantity());
+					sqlInsertOrderLineItem.setInt(2, addedProduct.getAmount());
 					sqlInsertOrderLineItem.execute(INSERT_ORDER, Statement.RETURN_GENERATED_KEYS);
 					
-					sqlUpdateProductStock.setInt(1, addedProduct.getQuantity());
+					sqlUpdateProductStock.setInt(1, addedProduct.getAmount());
 					sqlUpdateProductStock.execute(UPDATE_PRODUCT_STOCK);
 				}
 				
