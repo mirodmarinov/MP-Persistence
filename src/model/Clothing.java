@@ -53,7 +53,7 @@ public class Clothing extends Product
 	 * This method converts all the information about the Clothing into a string array for future GUI purposes
 	 */
 	@Override
-	public String[] infoToArray() //TODO - add to diagrams
+	public String[] infoToArray()
 	{
 		String[] productInfo = new String[] {getSize(), getColour(), String.valueOf(getProductNumber()), getName(), getDescription(), 
 						String.valueOf(getStock()), String.valueOf(getMinimumStock()), getPurchasePrice().toString(), getSalesPrice().toString(),

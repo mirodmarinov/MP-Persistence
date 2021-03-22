@@ -54,7 +54,7 @@ public class BusinessCustomer extends Customer
 	 * @return String array
 	 */
 	@Override
-	public String[] infoToArray() //TODO- add this method to the diagrams
+	public String[] infoToArray()
 	{
 		String[] customerInfo = new String[] {String.valueOf(getId()), getEmail(), getPhoneNumber(), getCountry(), getZipcode(), 
 						getCity(), getStreetname(), getHousenumber(), getBusinessName(), String.valueOf(getCvrNumber())}; 

@@ -6,7 +6,7 @@ import java.math.BigDecimal;
  * @author Group1 dmai0920
  * This class represents the Customer in the system
  */
-public abstract class Customer //TODO- add the fact that its abstract to the diagrams
+public abstract class Customer
 {
 	//Fields for the Customer
 	private int id; //TODO - check if should be protected instead
@@ -131,6 +131,6 @@ public abstract class Customer //TODO- add the fact that its abstract to the dia
 	 * Used as a support method to its subclasses. - PrivateCustomer and BusinessCustomer
 	 * @return
 	 */
-	public abstract String[] infoToArray(); //TODO - add this to the diagrams
+	public abstract String[] infoToArray();
 	
 }
