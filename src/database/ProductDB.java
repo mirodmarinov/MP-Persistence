@@ -98,7 +98,6 @@ public class ProductDB implements ProductDBIF
 			}
 			default:
 			{
-				//TODO - throw an exception
 			}
 		}
 		return product;

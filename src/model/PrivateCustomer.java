@@ -53,7 +53,7 @@ public class PrivateCustomer extends Customer
 	 * @return String array
 	 */
 	@Override
-	public String[] infoToArray() //TODO - put this into the diagrams
+	public String[] infoToArray()
 	{
 		String[] customerInfo = new String[] {String.valueOf(getId()), getEmail(), getPhoneNumber(), getCountry(), getZipcode(), 
 						getCity(), getStreetname(), getHousenumber(), getFirstName(), getLastName()}; 

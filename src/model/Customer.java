@@ -9,7 +9,7 @@ import java.math.BigDecimal;
 public abstract class Customer
 {
 	//Fields for the Customer
-	private int id; //TODO - check if should be protected instead
+	private int id;
 	private String phoneNumber;
 	private String email;
 	private String country;

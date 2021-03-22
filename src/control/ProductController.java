@@ -29,7 +29,6 @@ public class ProductController
 	 */
 	public Product findProductByNumber(int productNumber) throws SQLException, InvalidProductNumberException, ProductNotFoundException
 	{
-		//TODO - no checks for illegal characters in the productNumber
 		if(productNumber < 0)
 		{
 			throw new InvalidProductNumberException(ExceptionMessages.INVALID_PRODUCT_NUMBER);
