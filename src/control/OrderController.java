@@ -100,7 +100,7 @@ public class OrderController
 	
 	public String[] createOrder() throws SQLException
 	{
-		Order order = orderDB.create(customer, orderLineItems, getCustomerDiscount(), getTotalPrice()); //TODO Check discount
+		orderDB.create(customer, orderLineItems, getCustomerDiscount(), getTotalPrice()); //TODO Check discount
 		String[] info = {generateInvoice(), generateDeliveryNotes()};
 		return info;
 	}

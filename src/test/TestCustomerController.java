@@ -1,6 +1,5 @@
 package test;
 
-import static org.junit.Assert.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.sql.SQLException;
@@ -44,7 +43,7 @@ class TestCustomerController {
 	}
 
 	@Test
-	void testCustomerWithPhone11111111DoesntExist()
+	void testCustomerWithPhone12345677DoesntExist()
 	{
 		assertThrows(CustomerNotFoundException.class , () -> {customerCtr.findCustomerByPhone("12345677");});
 	}

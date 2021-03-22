@@ -1,6 +1,5 @@
 package database;
 
-import java.math.BigDecimal;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -10,8 +9,6 @@ import model.Clothing;
 import model.Equipment;
 import model.GunReplica;
 import model.Product;
-import model.Supplier;
-import database.SupplierDB;
 
 /**
  * @author Group1 dmai0920

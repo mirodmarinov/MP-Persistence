@@ -33,7 +33,6 @@ public class CustomerController
 	 */ 
 	public Customer findCustomerByPhone(String phone) throws SQLException, CustomerNotFoundException, InvalidPhoneNumberException
 	{
-		phone.replaceAll(" ", "");
 		if(phone.length() < 4 || phone.length() > 16)
 		{
 			throw new InvalidPhoneNumberException(ExceptionMessages.INVALID_PHONE_LENGTH + " Current length: " + phone.length());
@@ -42,7 +41,7 @@ public class CustomerController
 		{
 			if (phone.startsWith("+"))
 			{	
-				Integer.parseInt(phone.substring(1));
+				Integer.parseInt(phone.substring(1).replaceAll(" ", ""));
 			}
 			else
 			{
