@@ -80,6 +80,8 @@ class TestOrderController
 		  });
 	}
 	
+	
+	// CO1
 	@Test
 	void testCreateOrder() throws SQLException, InvalidProductNumberException, ProductNotFoundException, InvalidAmountException, NotEnoughStockException, CustomerNotFoundException, InvalidPhoneNumberException
 	{
@@ -87,9 +89,28 @@ class TestOrderController
 		orderCtr.findCustomerByPhone("12345678");
 		orderCtr.findProductByNumber(1);
 		orderCtr.addProductToOrder(1, 20);
+		
+		// Act
 		String[] returnedInfo = orderCtr.createOrder();
 		
-		//Act & Assert
+		// Assert
 		assertArrayEquals(new String[]{orderCtr.generateInvoice(), orderCtr.generateDeliveryNotes()},returnedInfo);
+	}
+	
+	
+	// CO2
+	@Test
+	void testClearOrder() throws SQLException, InvalidProductNumberException, ProductNotFoundException, InvalidAmountException, NotEnoughStockException, CustomerNotFoundException, InvalidPhoneNumberException
+	{
+		//Arrange
+		orderCtr.findCustomerByPhone("12345678");
+		orderCtr.findProductByNumber(1);
+		orderCtr.addProductToOrder(1, 20);
+		
+		//Act
+		orderCtr = new OrderController();
+		
+		//Assert
+		assertThrows(NullPointerException.class , () -> {orderCtr.createOrder();});	
 	}
 }
