@@ -36,7 +36,7 @@ public class CustomerController
 		phone.replaceAll(" ", "");
 		if(phone.length() < 4 || phone.length() > 16)
 		{
-			throw new InvalidPhoneNumberException(ExceptionMessages.INVALID_PHONE_LENGHT + " Currenct lenght: " + phone.length());
+			throw new InvalidPhoneNumberException(ExceptionMessages.INVALID_PHONE_LENGTH + " Current length: " + phone.length());
 		}
 		try
 		{
