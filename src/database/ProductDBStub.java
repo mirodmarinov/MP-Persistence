@@ -15,7 +15,7 @@ import model.*;
  */
 public class ProductDBStub implements ProductDBIF {
 	
-	public Product pumpkin = new Clothing("38", "red", 1, "Sexy Pumpkin", "Topless Pumpkin", 20, 2,new BigDecimal(1000), new BigDecimal(1200), new BigDecimal(400), "USA", new Supplier(100, "name", "phone", "mail", "contry", "zip", "city", "ste", "20"));
+	public Product pumpkin = new Clothing("38", "red", 1, "Sexy Lasso", "Long enough", 20, 2,new BigDecimal(1000), new BigDecimal(1200), new BigDecimal(400), "USA", new Supplier(100, "name", "phone", "mail", "contry", "zip", "city", "ste", "20"));
 
 	/**
 	 * Used for testing purposes. Returns fictional data from a fictional database
