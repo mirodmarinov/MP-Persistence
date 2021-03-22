@@ -18,19 +18,10 @@ class TestCustomerController {
 
 	CustomerController customerCtr;
 	
-	@BeforeAll
-	static void setUpBeforeClass() throws Exception {
-	}
-
-	
 	@BeforeEach
 	void setUp() throws Exception {
 		customerCtr = new CustomerController();
 		customerCtr.setStub(new CustomerDBStub());
-	}
-
-	@AfterEach
-	void tearDown() throws Exception {
 	}
 
 	// FC1

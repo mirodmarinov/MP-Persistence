@@ -33,13 +33,6 @@ class TestDBConnection
 		
 	}
 
-	@AfterAll
-	static void tearDown() throws Exception
-	{
-		
-	}
-
-	
 	@Test
 	@Order(0)
 	void testGetConnection() 
@@ -74,19 +67,7 @@ class TestDBConnection
 		{
 			fail();
 		}
-		
-		
 	}
-	
-	/*
-	@Test
-	@Order(2)
-	void testRetrieveInformationFromDatabaseLayer() throws SQLException
-	{
-		
-		assertNotNull(customerDB.findCustomerByPhone("11111111"));
-	}
-	*/
 	
 	@Test
 	@Order(2)
@@ -103,7 +84,6 @@ class TestDBConnection
 		Statement s = connection.createStatement();
 		assertEquals(1,s.executeUpdate("DELETE FROM PrivateCustomer WHERE customer_id = " + customer.getId()));
 		assertEquals(1,s.executeUpdate("DELETE FROM Customer WHERE id = " + customer.getId()));
-		
 	}
 	
 	@Test
@@ -135,12 +115,6 @@ class TestDBConnection
 				System.err.println("Could not load JDBC driver");
 				e.printStackTrace();
 			} 
-			/*catch (SQLException e) 
-			{
-				System.err.println("Could not connect to database " + DATABASE_NAME + "@" + SERVER_ADDRESS + ":" + SERVER_PORT + " as user " + USER_NAME + " using password ******");
-				System.out.println("Connection string was: " + connectionString.substring(0, connectionString.length() - PASSWORD.length()) + "....");
-				e.printStackTrace();
-			}*/
 		});
 	}
 }

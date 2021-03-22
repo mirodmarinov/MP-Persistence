@@ -27,23 +27,12 @@ class TestProductController
 {
 
 	ProductController productCtr;
-	
-	
-	@BeforeAll
-	static void setUpBeforeClass() throws Exception 
-	{
-	}
 
 	@BeforeEach
 	void setUp() throws Exception 
 	{
 		productCtr = new ProductController();
 		productCtr.setStub(new ProductDBStub());
-	}
-
-	@AfterEach
-	void tearDown() throws Exception 
-	{
 	}
 
 	// FP1
@@ -69,5 +58,4 @@ class TestProductController
 	{
 		assertThrows(InvalidProductNumberException.class , () -> {productCtr.findProductByNumber(-1);});
 	}
-
 }
