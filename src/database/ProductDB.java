@@ -45,7 +45,7 @@ public class ProductDB implements ProductDBIF
 	 * @param productNumber
 	 */
 	@Override
-	public Product findProductByNumber(int productNumber) throws SQLException //TODO - check exception
+	public Product findProductByNumber(int productNumber) throws SQLException
 	{
 		Product productCopy = null;
 		
@@ -67,7 +67,7 @@ public class ProductDB implements ProductDBIF
 	 * @return the created Product
 	 * @throws SQLException
 	 */
-	public Product buildObject(ResultSet rs) throws SQLException //TODO - check exception
+	public Product buildObject(ResultSet rs) throws SQLException
 	{
 		supplierDB = new SupplierDB();
 		Product product = null;
