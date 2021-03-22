@@ -23,39 +23,52 @@ import exceptions.*;
  * A test Class for Product Controller
  *
  */
-class TestProductController {
+class TestProductController 
+{
 
 	ProductController productCtr;
 	
 	
 	@BeforeAll
-	static void setUpBeforeClass() throws Exception {
+	static void setUpBeforeClass() throws Exception 
+	{
 	}
 
 	@BeforeEach
-	void setUp() throws Exception {
+	void setUp() throws Exception 
+	{
 		productCtr = new ProductController();
 		productCtr.setStub(new ProductDBStub());
 	}
 
 	@AfterEach
-	void tearDown() throws Exception {
+	void tearDown() throws Exception 
+	{
 	}
 
+	// FP1
 	@Test
+<<<<<<< Updated upstream
 	void testFindProductByNumber() throws SQLException, InvalidProductNumberException, ProductNotFoundException {
 		Product actualProduct = new Clothing("38", "red", 1, "Sexy Lasso", "Long enough", 20, 2,new BigDecimal(1000), new BigDecimal(1200), new BigDecimal(400), "USA", new Supplier(100, "name", "phone", "mail", "contry", "zip", "city", "ste", "20"));
+=======
+	void testFindProductByNumber() throws SQLException, InvalidProductNumberException, ProductNotFoundException 
+	{
+		Product actualProduct = new Clothing("38", "red", 1, "Sexy Pumpkin", "Topless Pumpkin", 20, 2, new BigDecimal(1000), new BigDecimal(1200), new BigDecimal(400), "USA", new Supplier(100, "name", "phone", "mail", "contry", "zip", "city", "ste", "20"));
+>>>>>>> Stashed changes
 		Product returnedProduct = productCtr.findProductByNumber(1);
 		assertEquals(1, returnedProduct.getProductNumber());
 		assertArrayEquals(returnedProduct.infoToArray(), actualProduct.infoToArray());
 	}
 	
+	// FP2
 	@Test
 	void testProductWithId69420DoesntExistAndThrowsException()
 	{
 		assertThrows(ProductNotFoundException.class , () -> {productCtr.findProductByNumber(69420);});
 	}
 	
+	// FP3
 	@Test
 	void testInvalidProductNumberShouldThrowException()
 	{
