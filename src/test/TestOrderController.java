@@ -2,6 +2,8 @@ package test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.sql.SQLException;
+
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
@@ -79,8 +81,15 @@ class TestOrderController
 	}
 	
 	@Test
-	void testCreateOrder()
+	void testCreateOrder() throws SQLException, InvalidProductNumberException, ProductNotFoundException, InvalidAmountException, NotEnoughStockException, CustomerNotFoundException, InvalidPhoneNumberException
 	{
+		//Arrange
+		orderCtr.findCustomerByPhone("12345678");
+		orderCtr.findProductByNumber(1);
+		orderCtr.addProductToOrder(1, 20);
+		String[] returnedInfo = orderCtr.createOrder();
 		
+		//Act & Assert
+		assertArrayEquals(new String[]{orderCtr.generateInvoice(), orderCtr.generateDeliveryNotes()},returnedInfo);
 	}
 }

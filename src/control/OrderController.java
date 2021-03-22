@@ -158,7 +158,7 @@ public class OrderController
 	 * A method to generate the invoice
 	 * @return
 	 */
-	private String generateInvoice()
+	public String generateInvoice()
 	{
 		BigDecimal discount = getCustomerDiscount();
 		//Header
@@ -193,7 +193,7 @@ public class OrderController
 	 * A method to generate the delivery notes
 	 * @return
 	 */
-	private String generateDeliveryNotes()
+	public String generateDeliveryNotes()
 	{
 		String name;
 		if(customer instanceof BusinessCustomer){
